@@ -25,11 +25,8 @@ app.service("Network", function($http, $q, Notifications) {
   this.post = function (callName, params, urgency, returnError) {
     var deferred = $q.defer();
     if (this.visitorToken) params.visitorToken = this.visitorToken;
-    // $http({method: 'POST', url: backend_endpoint + callName, data: params, headers: {'Content-Type': 'application/json'}}).then(function(response) {
-    console.log(params);
-    var configs = {
-      'Content-Type': 'application/json'
-    }
+    if (this.loginToken) params.loginToken = this.loginToken;
+    var configs = {'Content-Type': 'application/json'};
     $http.post(backend_endpoint + callName, params, configs).then(function(response) {
       if (!response.data.error) {
         deferred.resolve(response.data.data);
