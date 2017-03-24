@@ -1,0 +1,19 @@
+<form name="loginForm" ng-submit="loginForm.$valid && login()" novalidate>
+  <div class="row">
+    <div class="field">
+      <input type="text" name="email" ng-model="loginData.emailAddress" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,10}" id="login-email">
+      <label for="login-email">Email</label>
+    </div>
+  </div>
+  <div>
+    <div class="field">
+      <input type="password" name="password" ng-model="loginData.password" minlength="5" max-length="128" id="login-password">
+      <label for="login-password">Password</label>
+    </div>
+  </div>
+  <div>
+    <div class="field">
+      <button>Login</button>
+    </div>
+  </div>
+</form>
