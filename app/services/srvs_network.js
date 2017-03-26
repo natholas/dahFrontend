@@ -24,6 +24,7 @@ app.service("Network", function($http, $q, Notifications) {
   **/
   this.post = function (callName, params, urgency, returnError) {
     var deferred = $q.defer();
+    if (!params) params = {};
     if (this.visitorToken) params.visitorToken = this.visitorToken;
     if (this.loginToken) params.loginToken = this.loginToken;
     var configs = {'Content-Type': 'application/json'};
