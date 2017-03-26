@@ -1,5 +1,5 @@
 button,
-.button
+.button,
 input[type='submit'] {
   background: $colour-primary;
   color: $colour-white;
@@ -11,6 +11,8 @@ input[type='submit'] {
   outline: none;
   position: relative;
   overflow: hidden;
+  display: inline-block;
+  text-decoration: none;
 
   &:before {
     position: absolute;

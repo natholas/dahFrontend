@@ -9,16 +9,10 @@ login {
   }
 
   .login-content {
-    position: absolute;
     border: 2px solid $colour-light;
     background-color: $colour-white;
     padding: $gutter;
-    top: 30px;
-    right: 0;
     transition: all .2s ease;
-    .scrolled & {
-      top: 0px;
-    }
   }
 
 

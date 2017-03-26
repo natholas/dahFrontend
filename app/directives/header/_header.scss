@@ -1,12 +1,12 @@
-header {
+.header {
   width: 100%;
   padding: $gutter 0;
   margin: auto;
   z-index: 99;
-  background-color: #fff;
+  background-color: transparent;
   position: fixed;
   top: 0;
-  border-bottom: 2px solid $colour-light;
+  transition: all .2s ease;
 
   .content {
     max-width: $max-width;
@@ -18,19 +18,14 @@ header {
 
   .logo {
     float: left;
-    height: 100px;
+    height: 30px;
     margin-right: $gutter;
     transition: all .2s ease;
   }
 
-  .scrolled {
-    .logo {
-      height: 30px;
-    }
+  &.scrolled {
+    border-bottom: 2px solid $colour-light;
+    background-color: #fff;
   }
 
-}
-
-body {
-  padding-top: 100px;
 }

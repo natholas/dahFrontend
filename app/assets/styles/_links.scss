@@ -1,4 +1,4 @@
-a {
+a:not(.button) {
   color: $colour-primary;
   text-decoration: none;
   position: relative;

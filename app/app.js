@@ -5,17 +5,17 @@ var app = angular.module('app', ['ngRoute', 'templates'])
   $locationProvider.html5Mode(true);
 
   var originalWhen = $routeProvider.when;
-    $routeProvider.when = function(path, route) {
-      route.resolve || (route.resolve = {});
-      angular.extend(route.resolve, {
-        visitorToken: function(Bootloader) {
-          return Bootloader.init().then(function(response) {
-            return response;
-          });
-        }
-      });
-      return originalWhen.call($routeProvider, path, route);
-    };
+  $routeProvider.when = function(path, route) {
+    route.resolve || (route.resolve = {});
+    angular.extend(route.resolve, {
+      visitorToken: function(Bootloader) {
+        return Bootloader.init().then(function(response) {
+          return response;
+        });
+      }
+    });
+    return originalWhen.call($routeProvider, path, route);
+  };
 })
 
 .run(function($rootScope, $templateCache, Storage, $location) {

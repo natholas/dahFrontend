@@ -371,11 +371,22 @@ textarea + label {
   opacity: 1;
 }
 
-[type='text'].ng-invalid
-[type='password'].ng-invalid
-[type='email'].ng-invalid
+[type='text'].ng-invalid,
+[type='password'].ng-invalid,
+[type='email'].ng-invalid,
 [type='number'].ng-invalid {
-  border-color: $colour-red;
+  &.ng-not-empty {
+    border-color: $colour-red;
+    + label {
+      color: $colour-red;
+    }
+  }
+  .ng-submitted & {
+    border-color: $colour-red;
+    + label {
+      color: $colour-red;
+    }
+  }
 }
 
 
