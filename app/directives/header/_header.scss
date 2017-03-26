@@ -1,0 +1,36 @@
+header {
+  width: 100%;
+  padding: $gutter 0;
+  margin: auto;
+  z-index: 99;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  border-bottom: 2px solid $colour-light;
+
+  .content {
+    max-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 $gutter;
+    position: relative;
+  }
+
+  .logo {
+    float: left;
+    height: 100px;
+    margin-right: $gutter;
+    transition: all .2s ease;
+  }
+
+  .scrolled {
+    .logo {
+      height: 30px;
+    }
+  }
+
+}
+
+body {
+  padding-top: 100px;
+}

@@ -94,7 +94,7 @@ gulp.task('dev', ['clean-dev-folder'], function() {
   });
 
   gulp.watch(['app/**/*.scss', 'app/**/**/*.scss'], function() {
-    doSass('dev/assets/styles');
+    doSass('dev');
   });
 });
 

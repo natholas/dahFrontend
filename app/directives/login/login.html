@@ -1,19 +1,26 @@
-<form name="loginForm" ng-submit="loginForm.$valid && account.login()" novalidate>
-  <div class="row">
-    <div class="field">
-      <input type="text" name="email" ng-model="account.data.emailAddress" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,10}" id="login-email">
-      <label for="login-email">Email</label>
+<button type="button" ng-click="showLoginForm = !showLoginForm" ng-hide="showLoginForm" class="login-toggle">Login</button>
+
+<div class="login-content" ng-show="showLoginForm" >
+  
+  <button type="button" ng-click="showLoginForm = !showLoginForm">Close</button>
+
+  <form name="loginForm" ng-submit="loginForm.$valid && account.login()" novalidate>
+    <div class="formrow">
+      <div class="formfield field-100">
+        <input type="text" name="email" ng-model="account.data.emailAddress" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,10}" id="login-email" required>
+        <label for="login-email">Email</label>
+      </div>
     </div>
-  </div>
-  <div>
-    <div class="field">
-      <input type="password" name="password" ng-model="account.data.password" minlength="5" max-length="128" id="login-password">
-      <label for="login-password">Password</label>
+    <div class="formrow">
+      <div class="formfield field-100">
+        <input type="password" name="password" ng-model="account.data.password" minlength="5" max-length="128" id="login-password" required>
+        <label for="login-password">Password</label>
+      </div>
     </div>
-  </div>
-  <div>
-    <div class="field">
-      <button>Login</button>
+    <div class="formrow">
+      <div class="formfield field-100">
+        <button>Login</button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

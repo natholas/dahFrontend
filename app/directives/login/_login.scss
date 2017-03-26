@@ -1,0 +1,25 @@
+login {
+  float: right;
+
+  button.login-toggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+  }
+
+  .login-content {
+    position: absolute;
+    border: 2px solid $colour-light;
+    background-color: $colour-white;
+    padding: $gutter;
+    top: 30px;
+    right: 0;
+    transition: all .2s ease;
+    .scrolled & {
+      top: 0px;
+    }
+  }
+
+
+}

@@ -1,0 +1,42 @@
+button,
+.button
+input[type='submit'] {
+  background: $colour-primary;
+  color: $colour-white;
+  border: none;
+  padding: $gutter / 2 $gutter;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: $border-radius;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    position: absolute;
+    content: '';
+    background-color: $colour-white;
+    opacity: .3;
+    transition: all .2s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 0;
+    width: 0;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    &:before {
+      height: 4em;
+      width: 4em;
+    }
+  }
+
+  &:active, &:focus {
+    &:before {
+      height: 10em;
+      width: 10em;
+    }
+  }
+}
