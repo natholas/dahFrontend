@@ -5,9 +5,7 @@
  * This service does not have any dependencies so it can by used by any service or controller
 **/
 
-app.service("Network", function($http, $q, Notifications) {
-
-  var backend_endpoint = "https://dignity-hope.org/";
+app.service("Network", function($http, $q, Notifications, $rootScope) {
 
   /**
   * @description
@@ -28,7 +26,7 @@ app.service("Network", function($http, $q, Notifications) {
     if (this.visitorToken) params.visitorToken = this.visitorToken;
     if (this.loginToken) params.loginToken = this.loginToken;
     var configs = {'Content-Type': 'application/json'};
-    $http.post(backend_endpoint + callName, params, configs).then(function(response) {
+    $http.post($rootScope.backend_endpoint + callName, params, configs).then(function(response) {
       if (!response.data.error) {
         deferred.resolve(response.data.data);
       } else if (!returnError) {

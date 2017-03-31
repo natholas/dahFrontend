@@ -10,8 +10,10 @@
     <base href="/">
   </head>
   <body ng-app="app">
-    <header></header>
-    <container ng-view></container>
-    <footer></footer>
+    <div class="screen">
+      <header></header>
+      <container ng-view autoscroll="true"></container>
+      <footer></footer>
+    </div>
   </body>
 </html>

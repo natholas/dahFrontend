@@ -1,0 +1,15 @@
+.investment-progress {
+  background-color: $colour-light;
+
+  .investment-progress-inner {
+    background-color: $colour-primary;
+    height: 10px;
+    animation: process-entry .8s ease;
+  }
+}
+
+@keyframes process-entry {
+  from {
+    width: 0;
+  }
+}

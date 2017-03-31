@@ -15,6 +15,12 @@ a:not(.button) {
     transition: all .2s ease;
   }
 
+  .primary-colour & {
+    &:after {
+      border-bottom-color: $colour-red;
+    }
+  }
+
   &:hover {
     &:after {
       width: 100%;

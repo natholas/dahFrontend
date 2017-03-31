@@ -1,0 +1,14 @@
+<hero-banner url="backend_endpoint + entrepreneur.images[0]"></hero-banner>
+
+<section class="screenblock">
+  <div class="content">
+    <entrepreneur-details data="entrepreneur"></entrepreneur-details>
+  </div>
+</section>
+
+<section class="screenblock primary-colour cozy">
+  <div class="content">
+    <h2>{{entrepreneur.investors.length}} <span ng-show="entrepreneur.investors.length != 1">people have</span><span ng-show="entrepreneur.investors.length == 1">person has</span> invested in {{entrepreneur.name}}.</h2>
+    <entrepreneur-investors data="entrepreneur"></entrepreneur-investors>
+  </div>
+</section>

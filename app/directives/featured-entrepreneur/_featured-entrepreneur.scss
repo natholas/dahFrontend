@@ -1,0 +1,39 @@
+.featured-entrepreneur {
+
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: inherit;
+  }
+
+  border: 2px solid $colour-light;
+  border-radius: 4px;
+
+  .entrepreneur-image {
+    @include box(5, false, false);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .entrepreneur-wraper {
+    @include box(7, false, false);
+    padding: $gutter $gutter $gutter 0;
+  }
+
+  .entrepreneur-content {
+    height: 250px;
+  }
+
+  .entrepreneur-meta {
+
+    .info-box {
+      padding: $gutter 0;
+      font-size: 10pt;
+
+      div:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+}
