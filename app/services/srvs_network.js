@@ -7,7 +7,7 @@
 
 app.service("Network", function($http, $q, Notifications) {
 
-  var backend_endpoint = "http://localhost:3000/";
+  var backend_endpoint = "https://dignity-hope.org/";
 
   /**
   * @description

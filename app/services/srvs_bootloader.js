@@ -13,6 +13,7 @@ app.service("Bootloader", function(Network, $q, Storage) {
       if (response) $q.defer(response.visitorToken);
       this.visitorToken = Network.visitorToken = response.visitorToken;
       Storage.set('visitorToken', this.visitorToken, true);
+      deferred.resolve(this.visitorToken);
     });
     return deferred.promise;
   }
