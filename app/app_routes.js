@@ -34,6 +34,9 @@ app.config(function($routeProvider) {
   .when('/paymentfailed', {
     templateUrl: 'pages/payment-failed/payment-failed.html'
   })
+  .when('/confirmemail', {
+    templateUrl: 'pages/confirm-email/confirm-email.html'
+  })
 
   .otherwise({
     templateUrl: 'pages/404/404.html'
