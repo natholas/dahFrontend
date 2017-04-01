@@ -17,6 +17,24 @@ app.config(function($routeProvider) {
       }
     }
   })
+  .when('/checkout/:entrepreneurId/:investmentAmount', {
+    template: '<div ng-include="getTemplate()"></div>',
+    controller: 'checkoutCtrl',
+    resolve: {
+      order: function(ResolveCheckout) {
+        return ResolveCheckout().then(function(response) {
+          return response;
+        });
+      }
+    }
+  })
+  .when('/confirmation', {
+    templateUrl: 'pages/confirmation/confirmation.html'
+  })
+  .when('/paymentfailed', {
+    templateUrl: 'pages/payment-failed/payment-failed.html'
+  })
+
   .otherwise({
     templateUrl: 'pages/404/404.html'
   });

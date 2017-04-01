@@ -12,6 +12,7 @@
 
     border: 2px solid $colour-light;
     border-radius: 4px;
+    overflow: hidden;
 
     .entrepreneur-image {
       height: 250px;
@@ -28,11 +29,16 @@
       padding: $gutter;
 
       .info-box {
-        padding: $gutter 0;
+        padding: $gutter 0 0 0;
         font-size: 10pt;
+        margin: 0;
+
+        div:first-of-type {
+          float: left;
+        }
 
         div:last-of-type {
-          text-align: right;
+          float: right;
         }
       }
     }

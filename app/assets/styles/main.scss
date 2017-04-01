@@ -15,6 +15,7 @@
 @import 'links';
 @import 'buttons';
 @import 'forms';
+@import 'random';
 
 // Directives
 @import '../../directives/header/header';
@@ -28,3 +29,4 @@
 @import '../../directives/entrepreneur-details/entrepreneur-details';
 @import '../../directives/entrepreneur-investors/entrepreneur-investors';
 @import '../../directives/investment-progress/investment-progress';
+@import '../../directives/notifications/notifications';

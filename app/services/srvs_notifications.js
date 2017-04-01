@@ -9,6 +9,10 @@ app.service("Notifications", function(Notice) {
   this.data = {"notifications":[]};
   var noti = this, count = 1;
 
+  this.data.errorTexts = {
+    "DATA_DOESNT_MATCH_AN_EXISTING_ACCOUNT": "The data you entered doesn't match any account. Please double check your password and try again"
+  };
+
   /**
   * @description
   * Adds a new notification. This notification will be visible straight away
@@ -19,6 +23,8 @@ app.service("Notifications", function(Notice) {
   * @param {integer} duration The amount of seconds the notification will be shown.
   **/
   this.add = function (message, type, urgency, duration) {
+    console.log(message);
+    if (this.data.errorTexts[message]) message = this.data.errorTexts[message];
     noti.data.notifications.push(new Notice(message, type, urgency, duration, noti, count));
     count += 1;
   };

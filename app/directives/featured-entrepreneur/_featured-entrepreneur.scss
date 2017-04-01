@@ -1,14 +1,19 @@
 .featured-entrepreneur {
 
-  color: inherit;
-  cursor: pointer;
+  background-color: #fff;
 
-  &:hover {
-    color: inherit;
+  a {
+    color: $colour-dark;
+    cursor: pointer;
+
+    &:hover {
+      color: $colour-dark;
+    }
   }
 
   border: 2px solid $colour-light;
   border-radius: 4px;
+  overflow: hidden;
 
   .entrepreneur-image {
     @include box(5, false, false);
@@ -30,9 +35,14 @@
     .info-box {
       padding: $gutter 0;
       font-size: 10pt;
+      margin: 0;
+
+      div:first-of-type {
+        float: left;
+      }
 
       div:last-of-type {
-        text-align: right;
+        float: right;
       }
     }
   }

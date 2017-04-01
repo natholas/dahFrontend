@@ -19,6 +19,11 @@
   color: $colour-dark;
 }
 
+container {
+  display: block;
+  min-height: calc(100vh - 46px);
+}
+
 
 // 2. sections ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -39,6 +44,19 @@
   &.primary-colour {
     background-color: $colour-primary;
     color: #fff;
+  }
+
+  &.dark-colour {
+    background-color: $colour-dark;
+    color: #fff;
+  }
+
+  &.light-colour {
+    background-color: $colour-light;
+  }
+
+  &.headerify {
+    padding-top: 120px;
   }
 
   .content {
@@ -156,4 +174,28 @@ figure {
     padding: 12px 24px;
   }
 
+}
+
+.mainContent {
+  @include box(12, false, false);
+
+  @include media($medium-screen) {
+    @include box(8, false, false);
+  }
+
+  @include media($large-screen) {
+    @include box(9, false, false);
+  }
+}
+
+.sidebar {
+  @include box(12, false, false);
+
+  @include media($medium-screen) {
+    @include box(4, false, false);
+  }
+
+  @include media($large-screen) {
+    @include box(3, false, false);
+  }
 }

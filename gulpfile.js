@@ -35,10 +35,10 @@ gulp.task('dist', ['clean-dist-folder'], function() {
     minifyJs('dist/main_' + v + '.js', 'dist');
   }, true);
   move('app/assets/fonts/*', 'dist/assets/fonts');
-  move('app/assets/favicon/*', 'dist/assets/favicon');
+  move('app/assets/icons/*', 'dist/assets/icons');
   move('app/.htaccess', 'dist');
   optimizeImages(function() {
-    moveV(['app/assets/images/*.*', 'app/assets/images/**/**'], 'dist/assets/images');
+    moveV(['app/assets/images/*.*', 'app/assets/images/**/*.*'], 'dist/assets/images');
     console.log();
     console.log();
     console.log();
@@ -73,9 +73,9 @@ gulp.task('dev', ['clean-dev-folder'], function() {
     .pipe(gulp.dest('dev'));
   }, false);
   move('app/assets/fonts/*', 'dev/assets/fonts');
-  move('app/assets/favicon/*', 'dev/assets/favicon');
+  move('app/assets/icons/*', 'dev/assets/icons');
   move('app/.htaccess', 'dev');
-  moveV(['app/assets/images/*.*', 'app/assets/images/**/**'], 'dev/assets/images');
+  moveV(['app/assets/images/*.*', 'app/assets/images/**/*.*'], 'dev/assets/images');
 
   gulp.watch(['app/**/*.html', 'app/**/**/*.html', '!app/**/*.pre.html', '!app/**/**/*.pre.html'], function() {
     moveHtmlFiles('dev');

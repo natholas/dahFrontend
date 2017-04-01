@@ -1,4 +1,4 @@
-app.service("Bootloader", function(Network, $q, Storage, $interval) {
+app.service("Bootloader", function(Network, $q, Storage, $interval, Notifications) {
 
   var boot = this;
   this.visitorToken;
@@ -12,11 +12,15 @@ app.service("Bootloader", function(Network, $q, Storage, $interval) {
       deferred.resolve(this.visitorToken);
     }
     else Network.post('end/bootloader').then(function(response) {
-      if (response) $q.defer(response.visitorToken);
-      this.visitorToken = Network.visitorToken = response.visitorToken;
-      Storage.set('visitorToken', this.visitorToken, true);
-      boot.dataLoaded = true;
-      deferred.resolve(this.visitorToken);
+      if (response) {
+        this.visitorToken = Network.visitorToken = response.visitorToken;
+        Storage.set('visitorToken', this.visitorToken, true);
+        boot.dataLoaded = true;
+        deferred.resolve(this.visitorToken);
+      }
+      else {
+        Notifications.add('There was a technical error. Please try again later', 'bad', 10);
+      }
     });
     return deferred.promise;
   };

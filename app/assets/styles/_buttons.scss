@@ -13,8 +13,13 @@ input[type='submit'] {
   overflow: hidden;
   display: inline-block;
   text-decoration: none;
+  text-align: center;
 
-  &:before {
+  &.full-width {
+    width: 100%;
+  }
+
+  &:not(.close-button):before {
     position: absolute;
     content: '';
     background-color: $colour-white;
@@ -28,14 +33,48 @@ input[type='submit'] {
     border-radius: 50%;
   }
 
-  &:hover {
+  &.close-button {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px;
+    position: absolute;
+    right: #{-$gutter};
+    top: #{-$gutter};
+    z-index: 4;
+    transform: rotate(0deg);
+    transition: all .5s ease;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      left: calc(50% - 1px);
+      top: #{$gutter / 2};
+      transform-origin: center;
+      transform: rotate(45deg);
+      border-left: 2px solid #fff;
+      height: calc(100% - #{$gutter});
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &:not(.close-button):hover {
     &:before {
       height: 4em;
       width: 4em;
     }
   }
 
-  &:active, &:focus {
+  &:not(.close-button):active,
+  &:not(.close-button):focus {
     &:before {
       height: 10em;
       width: 10em;

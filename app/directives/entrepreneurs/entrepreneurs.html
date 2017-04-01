@@ -19,15 +19,16 @@
         {{entrepreneur.city}} {{entrepreneur.countryName}}
       </div>
       <investment-progress data="entrepreneur"></investment-progress>
-      <div class="row info-box">
-        <div class="box-6-12">
+      <div class="info-box">
+        <div>
           <b>{{100 / entrepreneur.amountNeeded * entrepreneur.totalInvested | number : 0}}%</b><br>
           funded
         </div>
-        <div class="box-6-12">
+        <div>
           <b>{{entrepreneur.totalInvested | money}}</b><br>
           invested
         </div>
+        <clearfix></clearfix>
       </div>
     </div>
   </a>
