@@ -10,6 +10,7 @@ app.factory('Entrepreneur', function(Network) {
     this.status = data.status;
     this.description = data.description;
     this.dob = new Date(data.dob);
+    this.dob.setTime(this.dob.getTime() + 1000 * 3600 * 12 + this.dob.getTimezoneOffset()*60*1000);
     this.city = data.city;
     this.countryId = data.countryId;
     this.amountNeeded = data.amountNeeded.toFixed(2);
@@ -20,7 +21,7 @@ app.factory('Entrepreneur', function(Network) {
     this.fundedTime = data.fundedTime;
     this.teamName = data.teamName;
     this.countryName = data.countryName;
-    this.images = data.images.split('|');
+    this.image = data.image;
     this.orders = {};
     this.accountInvestment = 0;
   };

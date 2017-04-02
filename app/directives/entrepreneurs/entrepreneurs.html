@@ -4,12 +4,12 @@
       INVESTED
     </div>
     <div
-      ng-if="entrepreneur.images[0]"
+      ng-if="entrepreneur.image"
       class="entrepreneur-image"
-      ng-style="{'background-image': 'url(' + backend_endpoint + entrepreneur.images[0] + ')'}">
+      ng-style="{'background-image': 'url(' + backend_endpoint + entrepreneur.image + ')'}">
     </div>
     <div
-      ng-if="!entrepreneur.images[0]"
+      ng-if="!entrepreneur.image"
       class="entrepreneur-image"
       ng-style="{'background-image': 'url(' + backend_endpoint + 'images/entrepreneur_default.svg' + ')'}">
     </div>

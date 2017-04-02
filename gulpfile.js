@@ -18,7 +18,7 @@ var sass = require('gulp-sass');
 var templateCache;
 
 // This value can be updated by running gulp increment
-var v = "1";
+var v = "2";
 
 //////////
 // Default Task

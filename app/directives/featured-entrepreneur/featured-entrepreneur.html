@@ -2,15 +2,15 @@
 
   <a class="row" ng-href="/entrepreneur/{{entrepreneur.id}}">
     <div
-      ng-if="entrepreneur.images[0]"
+      ng-if="entrepreneur.image"
       class="entrepreneur-image"
-      ng-style="{'background-image': 'url(' + backend_endpoint + entrepreneur.images[0] + ')'}">
+      ng-style="{'background-image': 'url(' + backend_endpoint + entrepreneur.image + ')'}">
       <div class="tag" ng-show="account.investedEntrepreneurs[entrepreneur.id]">
         INVESTED
       </div>
     </div>
     <div
-      ng-if="!entrepreneur.images[0]"
+      ng-if="!entrepreneur.image"
       class="entrepreneur-image"
       ng-style="{'background-image': 'url(' + backend_endpoint + 'images/entrepreneur_default.svg' + ')'}">
       <div class="tag" ng-show="account.investedEntrepreneurs[entrepreneur.id]">
