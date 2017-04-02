@@ -37,6 +37,10 @@ app.config(function($routeProvider) {
   .when('/confirmemail', {
     templateUrl: 'pages/confirm-email/confirm-email.html'
   })
+  .when('/account', {
+    template: '<div ng-include="getTemplate()"></div>',
+    controller: 'accountCtrl'
+  })
 
   .otherwise({
     templateUrl: 'pages/404/404.html'

@@ -6,7 +6,6 @@
 <div class="login-content" ng-show="showLoginForm" >
 
   <button type="button" class="close-button" ng-click="showLoginForm = !showLoginForm">x</button>
-  {{loginForm.$valid}}
   <form name="loginForm" ng-submit="loginForm.$valid && account.login(loginEmailAddress, loginPassword)" ng-show="!account.loginToken" novalidate>
 
     <h3 class="bottomless">Login</h3>

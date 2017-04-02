@@ -1,25 +1,26 @@
-app.service("Account", function(Network, Storage) {
+app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout) {
 
   var acc = this;
   this.loginToken = null;
   this.role = null;
   this.userDetails = null;
+  this.orders = {};
+  this.investedEntrepreneurs = {};
 
   this.loggingIn = false;
   this.signingUp = false;
-
-  this.data = {};
+  this.gettingOrders = false;
 
   this.init = function () {
     if (data = Storage.get('loginData')) {
       acc.loginToken = Network.loginToken = data.loginToken;
       acc.role = data.role;
       acc.userDetails = data.userDetails;
+      acc.getOrders();
     }
   }
 
   this.login = function (emailAddress, password) {
-    console.log(emailAddress, password);
     if (this.loggingIn) return;
     this.loggingIn = true;
     var params = {
@@ -29,7 +30,6 @@ app.service("Account", function(Network, Storage) {
     return Network.post('end/login', params).then(function(response) {
       acc.loggingIn = false;
       if (response) {
-        acc.data = {};
         acc.loginToken = Network.loginToken = response.loginToken;
         acc.role = response.role;
         acc.userDetails = response.userDetails;
@@ -38,10 +38,7 @@ app.service("Account", function(Network, Storage) {
           role: acc.role,
           userDetails: acc.userDetails
         }, true);
-      }
-      else {
-        // TODO: Need to add error stuff
-        console.error('NEED TO ADD ERROR STUFF');
+        acc.getOrders();
       }
       return response;
     });
@@ -71,8 +68,34 @@ app.service("Account", function(Network, Storage) {
 
   };
 
+  this.getOrders = function () {
+    if (this.gettingOrders || !this.loginToken) return;
+    this.gettingOrders = true;
+
+    Network.post('end/getorders').then(function(response) {
+      this.gettingOrders = false;
+      if (response) {
+        acc.processOrders(response.orders, acc.orders);
+        // Entrepreneurs.returnWhenLoaded().then(function() {
+        //   $timeout(function() {
+        //     acc.linkOrdersToEntrepreneurs(acc.orders, acc.investedEntrepreneurs);
+        //   }, 20);
+        // });
+      }
+    });
+  };
+
+  this.processOrders = function (newOrders, orders) {
+    for (var i in newOrders)
+      orders[newOrders[i].orderId] = new Order(newOrders[i], this);
+  };
+  //
+  // this.linkOrdersToEntrepreneurs = function (orders, entrepreneurs) {
+  //   for (var i in orders) {
+  //     entrepreneurs[orders[i].entrepreneur.id] = orders[i].entrepreneur;
+  //   }
+  // };
+
   this.init();
-
-
 
 });

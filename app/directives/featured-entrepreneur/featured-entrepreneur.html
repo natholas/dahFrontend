@@ -5,16 +5,22 @@
       ng-if="entrepreneur.images[0]"
       class="entrepreneur-image"
       ng-style="{'background-image': 'url(' + backend_endpoint + entrepreneur.images[0] + ')'}">
+      <div class="tag" ng-show="account.investedEntrepreneurs[entrepreneur.id]">
+        INVESTED
+      </div>
     </div>
     <div
       ng-if="!entrepreneur.images[0]"
       class="entrepreneur-image"
       ng-style="{'background-image': 'url(' + backend_endpoint + 'images/entrepreneur_default.svg' + ')'}">
+      <div class="tag" ng-show="account.investedEntrepreneurs[entrepreneur.id]">
+        INVESTED
+      </div>
     </div>
     <div class="entrepreneur-wraper">
       <div class="entrepreneur-content">
         <h3>{{entrepreneur.name}}</h3>
-        <p>{{entrepreneur.description | limitTo: 500}}</p>
+        <p>{{entrepreneur.description | limitTo: 450}}</p>
       </div>
       <div class="entrepreneur-meta">
         <div class="info-box">

@@ -8,7 +8,15 @@
       color: inherit;
     }
 
-    @include box(4, false, false);
+    @include box(12, false, false);
+
+    @include media($medium-screen) {
+      @include box(6, false, false);
+    }
+
+    @include media($large-screen) {
+      @include box(4, false, false);
+    }
 
     border: 2px solid $colour-light;
     border-radius: 4px;

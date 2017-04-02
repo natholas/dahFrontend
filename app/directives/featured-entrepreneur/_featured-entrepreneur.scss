@@ -16,18 +16,40 @@
   overflow: hidden;
 
   .entrepreneur-image {
-    @include box(5, false, false);
+    @include box(12, false, false);
     background-size: cover;
     background-position: center;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
   }
 
   .entrepreneur-wraper {
-    @include box(7, false, false);
-    padding: $gutter $gutter $gutter 0;
+    @include box(12, false, false);
+    padding: $gutter;
   }
 
-  .entrepreneur-content {
-    height: 250px;
+
+  @include media($medium-screen) {
+    .entrepreneur-image {
+      height: auto;
+      @include box(5, false, false);
+    }
+
+    .entrepreneur-wraper {
+      @include box(7, false, false);
+      padding: $gutter $gutter $gutter 0;
+    }
+
+    .entrepreneur-content {
+      height: 350px;
+    }
+  }
+
+  @include media($large-screen) {
+    .entrepreneur-content {
+      height: 250px;
+    }
   }
 
   .entrepreneur-meta {
