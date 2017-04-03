@@ -4,14 +4,7 @@ app.directive('entrepreneurDetails', function() {
     scope: {entrepreneur: '=data'},
     controller: function($scope) {
       $scope.amounts = [
-        10,
-        15,
-        20,
-        50,
-        100,
-        150,
-        200,
-        1000
+        10, 15, 20, 50, 100, 150, 200, 1000
       ];
 
       for (var i = 0; i < $scope.amounts.length; i ++) {

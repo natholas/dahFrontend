@@ -10,6 +10,7 @@
   "license": "UNLICENCED",
   "dependencies": {
     "angular": "^1.6.3",
+    "angular-in-viewport": "^1.1.0",
     "angular-route": "^1.6.3"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout) {
+app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout, Bootloader) {
 
   var acc = this;
   this.loginToken = null;
@@ -76,11 +76,6 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
       this.gettingOrders = false;
       if (response) {
         acc.processOrders(response.orders, acc.orders);
-        // Entrepreneurs.returnWhenLoaded().then(function() {
-        //   $timeout(function() {
-        //     acc.linkOrdersToEntrepreneurs(acc.orders, acc.investedEntrepreneurs);
-        //   }, 20);
-        // });
       }
     });
   };
@@ -89,13 +84,9 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
     for (var i in newOrders)
       orders[newOrders[i].orderId] = new Order(newOrders[i], this);
   };
-  //
-  // this.linkOrdersToEntrepreneurs = function (orders, entrepreneurs) {
-  //   for (var i in orders) {
-  //     entrepreneurs[orders[i].entrepreneur.id] = orders[i].entrepreneur;
-  //   }
-  // };
 
-  this.init();
+  Bootloader.returnWhenLoaded().then(function() {
+    acc.init();
+  });
 
 });

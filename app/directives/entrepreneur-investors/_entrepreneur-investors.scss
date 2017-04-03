@@ -1,6 +1,16 @@
 .entrepreneur-investors {
   .investor {
-    @include box(3, false, false);
+    @include box(12, false, false);
+
+    @include media($medium-screen) {
+      @include box(4, false, false);
+    }
+
+    @include media($large-screen) {
+      @include box(3, false, false);
+    }
+
+    margin-top: $gutter;
 
     color: $colour-dark;
     background-color: #fff;

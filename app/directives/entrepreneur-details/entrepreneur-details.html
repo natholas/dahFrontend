@@ -1,8 +1,8 @@
-<div class="entrepreneur row">
+<div class="entrepreneur-details row">
 
   <div class="mainContent">
-    <h2>About {{entrepreneur.name}}</h2>
-    <p>{{entrepreneur.description}}</p>
+    <h2 class="">History & business plan</h2>
+    <span>{{entrepreneur.description}}</span>
   </div>
 
   <div class="sidebar">
@@ -13,7 +13,7 @@
       <li>Goal: <b>{{entrepreneur.amountNeeded | money}}</b></li>
       <li>Missing: <b>{{entrepreneur.stillNeeded | money}}</b></li>
       <li>Funded: <b>{{100 / entrepreneur.amountNeeded * entrepreneur.totalInvested | number : 0}}%</b></li>
-      <li>Investors: <b>{{entrepreneur.investors.length}}</b></li>
+      <li>Investors: <b>{{entrepreneur.investorCount}}</b></li>
       <li>Location: <b>{{entrepreneur.city}} {{entrepreneur.countryName}}</b></li>
     </ul>
     <br>

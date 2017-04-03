@@ -1,0 +1,18 @@
+.investor-messages {
+
+  .message {
+    background: $colour-light;
+    border-radius: 4px;
+    padding: $gutter;
+    margin-bottom: $gutter;
+  }
+
+  .message-meta {
+    font-size: 10pt;
+    text-align: right;
+  }
+
+  .message-text {
+    white-space: pre-wrap;
+  }
+}

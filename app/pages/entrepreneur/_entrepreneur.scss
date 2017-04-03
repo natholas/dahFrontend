@@ -1,0 +1,42 @@
+.entrepreneur-top {
+  z-index: 3;
+  padding-bottom: 0;
+  padding-top: 60px;
+
+  @include media($medium-screen) {
+    padding-top: 200px;
+  }
+
+  h1 {
+    @include media($medium-screen) {
+      padding-left: 240px;
+      position: absolute;
+      bottom: 10px;
+    }
+  }
+
+  .entrepreneur-image {
+    height: 60vh;
+    margin: $gutter #{-$gutter} #{-$gutter} #{-$gutter};
+    background-size: cover;
+    background-position: center;
+
+    @include media($medium-screen) {
+      margin: 0;
+      border-radius: 4px;
+      border: 4px solid #fff;
+      position: absolute;
+      bottom: -70px;
+      height: 220px;
+      width: 220px;
+    }
+  }
+}
+
+.entrepreneur-description {
+  padding-top: 20px;
+  white-space: pre-wrap;
+  @include media($medium-screen) {
+    padding-top: 80px;
+  }
+}

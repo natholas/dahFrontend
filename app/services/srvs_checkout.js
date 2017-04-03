@@ -16,7 +16,6 @@ app.service('Checkout', function(Network, Account, Storage, Notifications) {
         'PUBLIC'
       ).then(function(response) {
         if (response) {
-
           console.log("logging in");
           Account.login(
             order.user.emailAddress.toLowerCase(),

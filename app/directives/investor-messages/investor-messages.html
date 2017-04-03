@@ -1,0 +1,11 @@
+<div class="investor-messages">
+  <div class="message" ng-repeat="message in messages | orderBy : '-createdTime'">
+    <div class="message-text">
+      <b>{{message.nickname}} ({{message.amount | money}})</b><br>
+      {{message.message}}
+    </div>
+    <div class="message-meta">
+      {{message.createdTime | date : 'dd/MM/yy - HH:mm'}}
+    </div>
+  </div>
+</div>

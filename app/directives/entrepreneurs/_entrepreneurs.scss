@@ -4,6 +4,9 @@
     color: inherit;
     cursor: pointer;
 
+    margin-bottom: $gutter!important;
+    margin-top: $gutter!important;
+
     &:hover {
       color: inherit;
     }
@@ -23,7 +26,7 @@
     overflow: hidden;
 
     .entrepreneur-image {
-      height: 250px;
+      height: 340px;
       background-size: cover;
       background-position: center;
     }

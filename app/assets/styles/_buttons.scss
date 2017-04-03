@@ -73,8 +73,7 @@ input[type='submit'] {
     }
   }
 
-  &:not(.close-button):active,
-  &:not(.close-button):focus {
+  &:not(.close-button):active {
     &:before {
       height: 10em;
       width: 10em;
