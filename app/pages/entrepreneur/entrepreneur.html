@@ -31,7 +31,7 @@
     <div class="content">
       <h2>{{entrepreneur.investorCount}} <span ng-show="entrepreneur.investorCount != 1">people have</span><span ng-show="entrepreneur.investorCount == 1">person has</span> invested in {{entrepreneur.name}}.</h2>
       <investor-messages data="entrepreneur"></investor-messages>
-      <div class="center">
+      <div class="center" ng-show="entrepreneur.status == 'LIVE'">
         <br>
         <p class="">Invest to add your own message</p>
         <a ng-href="/checkout/{{entrepreneur.id}}/5" class="button">Invest</a>

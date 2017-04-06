@@ -3,10 +3,17 @@ app.directive('featuredEntrepreneur', function() {
     templateUrl: 'directives/featured-entrepreneur/featured-entrepreneur.html',
     scope: {status: '='},
     controller: function($scope, Entrepreneurs) {
-      Entrepreneurs.returnWhenLoaded().then(function() {
-        $scope.entrepreneur = randomProperty(Entrepreneurs[$scope.status]);
-      });
-      Entrepreneurs.needEntrepreneurData($scope.status);
+
+      try {
+        Entrepreneurs.needEntrepreneurData($scope.status).then(function() {
+          $scope.entrepreneur = randomProperty(Entrepreneurs[$scope.status]);
+        });
+      }
+      catch(err) {
+        Entrepreneurs.returnWhenLoaded().then(function() {
+          $scope.entrepreneur = randomProperty(Entrepreneurs[$scope.status]);
+        });
+      }
     }
   }
 });

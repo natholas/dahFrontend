@@ -7,27 +7,31 @@
 
   <div class="sidebar">
     <h2>Statistics</h2>
-    <investment-progress data="entrepreneur"></investment-progress>
+    <investment-progress ng-show="entrepreneur.status == 'LIVE'" data="entrepreneur"></investment-progress>
 
     <ul class="un">
       <li>Goal: <b>{{entrepreneur.amountNeeded | money}}</b></li>
-      <li>Missing: <b>{{entrepreneur.stillNeeded | money}}</b></li>
-      <li>Funded: <b>{{100 / entrepreneur.amountNeeded * entrepreneur.totalInvested | number : 0}}%</b></li>
+      <li ng-hide="entrepreneur.status == 'LIVE'">Goal reached: <b>{{entrepreneur.fundedTime | date}}</b></li>
+      <li ng-hide="entrepreneur.status == 'LIVE'">Time taken: <b>{{entrepreneur.fundedTime | dateDiff : entrepreneur.createdTime}}</b></li>
+      <li ng-show="entrepreneur.status == 'LIVE'">Missing: <b>{{entrepreneur.stillNeeded | money}}</b></li>
+      <li ng-show="entrepreneur.status == 'LIVE'">Funded: <b>{{100 / entrepreneur.amountNeeded * entrepreneur.totalInvested | number : 0}}%</b></li>
       <li>Investors: <b>{{entrepreneur.investorCount}}</b></li>
       <li>Location: <b>{{entrepreneur.city}} {{entrepreneur.countryName}}</b></li>
     </ul>
     <br>
     <br>
-    <div class="formrow">
-      <div class="formfield">
-        <select ng-model="investmentAmount" id="investment-amount">
-          <option ng-repeat="amount in amounts" ng-value="amount">{{amount | money}}</option>
-        </select>
-        <label for="investment-amount">Investment amount</label>
+    <div ng-show="entrepreneur.status == 'LIVE'">
+      <div class="formrow">
+        <div class="formfield">
+          <select ng-model="investmentAmount" id="investment-amount">
+            <option ng-repeat="amount in amounts" ng-value="amount">{{amount | money}}</option>
+          </select>
+          <label for="investment-amount">Investment amount</label>
+        </div>
       </div>
+      <br>
+      <a ng-href="/checkout/{{entrepreneur.id}}/{{investmentAmount}}" class="button full-width">Invest</a>
     </div>
-    <br>
-    <a ng-href="/checkout/{{entrepreneur.id}}/{{investmentAmount}}" class="button full-width">Invest</a>
   </div>
 
 </div>

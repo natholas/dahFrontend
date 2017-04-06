@@ -9,9 +9,9 @@ app.service('Entrepreneurs', function(Network, Entrepreneur, $interval, $q, Boot
 
   this.getentrepreneurs = function(status) {
     var params = {status: status};
-    Network.post('end/getentrepreneurs', params).then(function(response) {
+    return Network.post('end/getentrepreneurs', params).then(function(response) {
       if (response) {
-        entr.processEntrepreneurData(response.entrepreneurs, status);
+        return entr.processEntrepreneurData(response.entrepreneurs, status);
       }
     });
   };
@@ -59,8 +59,8 @@ app.service('Entrepreneurs', function(Network, Entrepreneur, $interval, $q, Boot
   this.needEntrepreneurData = function (status) {
     if (this.needed[status]) return;
     this.needed[status] = true;
-    Bootloader.returnWhenLoaded().then(function() {
-      entr.getentrepreneurs(status);
+    return Bootloader.returnWhenLoaded().then(function() {
+      return entr.getentrepreneurs(status);
     });
   };
 
