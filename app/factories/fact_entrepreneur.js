@@ -26,11 +26,23 @@ app.factory('Entrepreneur', function(Network) {
     this.accountInvestment = 0;
   };
 
-  Entrepreneur.prototype.getInvestors = function () {
+  Entrepreneur.prototype.getMessages = function () {
     var params = {entrepreneurId: this.id}, entr = this;
-    Network.post('end/getinvestors', params).then(function(response) {
-      if (response) entr.investors = response.investors;
+    Network.post('end/getinvestormessages', params).then(function(response) {
+      if (response) {
+        entr.messages = response.messages;
+        entr.countInvestors(response.messages)
+      }
     });
+
+    Entrepreneur.prototype.countInvestors = function (messages) {
+      var investors = [];
+      for (var i in messages) {
+        if (investors.indexOf(messages[i].userId) < 0)
+          investors.push(messages[i].userId);
+      }
+      this.investorCount = investors.length;
+    };
   };
 
   return Entrepreneur;

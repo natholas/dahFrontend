@@ -14,12 +14,14 @@ input[type='submit'] {
   display: inline-block;
   text-decoration: none;
   text-align: center;
+  transition: all .2s ease;
 
   &.full-width {
     width: 100%;
+    padding: $gutter;
   }
 
-  &:not(.close-button):before {
+  &:not(.close-button):not(.loading):before {
     position: absolute;
     content: '';
     background-color: $colour-white;
@@ -31,6 +33,38 @@ input[type='submit'] {
     height: 0;
     width: 0;
     border-radius: 50%;
+  }
+
+  transform: rotateX(0deg);
+
+  &.loading {
+    transform: rotateX(45deg);
+    position: relative;
+    overflow: visible;
+    transform-style: preserve-3d;
+    border-radius: 4px 4px 0 0;
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      top: calc(100% - 1px);
+      left: 0;
+      right: 0;
+      height: 20px;
+      background-color: $colour-dark;
+      transform: rotateX(-90deg);
+      transform-origin: 50% 0%;
+      width: 100%;
+      opacity: 1;
+      border-radius: 0;
+      border-radius: 0 0 4px 4px;
+    }
+
+    &:after {
+      background-color: $colour-secondary;
+      animation: button-loading 3.5s ease-out;
+    }
   }
 
   &.close-button {
@@ -66,17 +100,31 @@ input[type='submit'] {
     }
   }
 
-  &:not(.close-button):hover {
+  &:not(.close-button):not(.loading):hover {
     &:before {
       height: 4em;
       width: 4em;
     }
   }
 
-  &:not(.close-button):active {
+  &:not(.close-button):not(.loading):active {
     &:before {
       height: 10em;
       width: 10em;
     }
+  }
+}
+
+.loading-container {
+  perspective: 900px;
+  transition: all .2s ease;
+}
+
+@keyframes button-loading {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
   }
 }

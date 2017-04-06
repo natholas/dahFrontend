@@ -60,7 +60,6 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
       nickname: nickname,
       publicStatus: publicStatus
     }
-
     return Network.post('end/signup', params).then(function(response) {
       acc.signingUp = false;
       return response;

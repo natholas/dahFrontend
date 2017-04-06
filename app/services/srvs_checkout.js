@@ -8,7 +8,6 @@ app.service('Checkout', function(Network, Account, Storage, Notifications) {
     this.checkingOut = true;
     if (Account.loginToken) this.doOrder(order);
     else {
-      console.log("signing up");
       Account.signup(
         order.user.emailAddress.toLowerCase(),
         order.user.password,
@@ -16,16 +15,15 @@ app.service('Checkout', function(Network, Account, Storage, Notifications) {
         'PUBLIC'
       ).then(function(response) {
         if (response) {
-          console.log("logging in");
           Account.login(
             order.user.emailAddress.toLowerCase(),
             order.user.password
           ).then(function(response) {
-
-            console.log(response);
             if (response) check.doOrder(order);
+            else check.checkingOut = false;
           });
         }
+        else check.checkingOut = false;
       });
     }
   };

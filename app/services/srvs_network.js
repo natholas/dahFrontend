@@ -26,7 +26,7 @@ app.service("Network", function($http, $q, Notifications, $rootScope) {
     if (this.visitorToken) params.visitorToken = this.visitorToken;
     if (this.loginToken) params.loginToken = this.loginToken;
     var configs = {'Content-Type': 'application/json'};
-    $http.post($rootScope.backend_endpoint + callName, params, configs).then(function(response) {
+    $http.post('@BACKENDURL@' + callName, params, configs).then(function(response) {
       if (!response.data.error) {
         deferred.resolve(response.data.data);
       } else if (!returnError) {

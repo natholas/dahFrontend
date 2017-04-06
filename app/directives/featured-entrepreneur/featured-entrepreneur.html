@@ -4,7 +4,7 @@
     <div
       ng-if="entrepreneur.image"
       class="entrepreneur-image"
-      ng-style="{'background-image': 'url(' + backend_endpoint + entrepreneur.image + ')'}">
+      ng-style="{'background-image': 'url(@BACKENDURL@' + entrepreneur.image + ')'}">
       <div class="tag" ng-show="account.investedEntrepreneurs[entrepreneur.id]">
         INVESTED
       </div>
@@ -12,7 +12,7 @@
     <div
       ng-if="!entrepreneur.image"
       class="entrepreneur-image"
-      ng-style="{'background-image': 'url(' + backend_endpoint + 'images/entrepreneur_default.svg' + ')'}">
+      ng-style="{'background-image': 'url(@BACKENDURL@' + 'images/entrepreneur_default.svg' + ')'}">
       <div class="tag" ng-show="account.investedEntrepreneurs[entrepreneur.id]">
         INVESTED
       </div>

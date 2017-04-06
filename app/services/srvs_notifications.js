@@ -10,7 +10,8 @@ app.service("Notifications", function(Notice) {
   var noti = this, count = 1;
 
   this.data.errorTexts = {
-    "DATA_DOESNT_MATCH_AN_EXISTING_ACCOUNT": "The data you entered doesn't match any account. Please double check your password and try again"
+    'DATA_DOESNT_MATCH_AN_EXISTING_ACCOUNT': "Your email address or password is not correct, please try again.",
+    'EMAILADDRESS_NOT_UNIQUE': "An account with that email address already exists. Please try to login."
   };
 
   /**
@@ -23,7 +24,6 @@ app.service("Notifications", function(Notice) {
   * @param {integer} duration The amount of seconds the notification will be shown.
   **/
   this.add = function (message, type, urgency, duration) {
-    console.log(message);
     if (this.data.errorTexts[message]) message = this.data.errorTexts[message];
     noti.data.notifications.push(new Notice(message, type, urgency, duration, noti, count));
     count += 1;

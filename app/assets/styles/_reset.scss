@@ -23,3 +23,7 @@ clearfix,
   display: block;
   clear: both;
 }
+
+select::-ms-expand {
+    display: none;
+}

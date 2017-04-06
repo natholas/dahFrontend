@@ -98,7 +98,9 @@
           </li>
         </ul>
         <br>
-        <button class=full-width>To payment</button>
+        <div class="loading-container">
+          <button class="full-width" ng-class="{loading : Checkout.checkingOut}">To payment</button>
+        </div>
       </div>
 
     </div>

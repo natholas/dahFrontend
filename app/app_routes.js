@@ -9,6 +9,9 @@ app.config(function($routeProvider) {
   .when('/entrepreneurs', {
     templateUrl: 'pages/entrepreneurs/entrepreneurs.html'
   })
+  .when('/success-stories', {
+    templateUrl: 'pages/success-stories/success-stories.html'
+  })
   .when('/entrepreneur/:entrepreneurId', {
     template: '<div ng-include="getTemplate()"></div>',
     controller: 'entrepreneurCtrl',

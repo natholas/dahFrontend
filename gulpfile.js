@@ -18,7 +18,9 @@ var sass = require('gulp-sass');
 var templateCache;
 
 // This value can be updated by running gulp increment
-var v = "2";
+var v = "3";
+var backendUrl = 'https://dignity-hope.org/';
+var devBackendUrl = 'http://localhost:3000/';
 
 //////////
 // Default Task
@@ -126,6 +128,7 @@ function moveHtmlFiles(dest) {
     '!app/**/**/*.pre.html'
   ])
   .pipe(replace('@version@', v))
+  .pipe(replace('@BACKENDURL@', dest == 'dist' ? backendUrl : devBackendUrl))
   .pipe(htmlmin({collapseWhitespace: true, removeComments: true}))
   .pipe(gulp.dest(dest));
   console.log('Done html files');
@@ -145,6 +148,7 @@ function movePreHtmlFiles(dest) {
     return opt;
   }))
   .pipe(replace('@version@', v))
+  .pipe(replace('@BACKENDURL@', dest == 'dist' ? backendUrl : devBackendUrl))
   .pipe(htmlmin({collapseWhitespace: true, removeComments: true}))
   .pipe(gulp.dest(dest));
   console.log('Done pre html files');
@@ -165,6 +169,7 @@ function concatJsFiles(dest, callback, preload) {
   .pipe(addStream.obj(prepareTemplates(preload)))
   .pipe(concat('main_' + v + '.js'))
   .pipe(replace('@version@', v))
+  .pipe(replace('@BACKENDURL@', dest == 'dist' ? backendUrl : devBackendUrl))
   .pipe(gulp.dest(dest))
   .on('end', function() {
     console.log("Done JS files");
@@ -213,6 +218,7 @@ function doSass(dest) {
   .pipe(sass().on('error', sass.logError))
   .pipe(autoprefixer('last 2 versions'))
   .pipe(replace('@version@', v))
+  .pipe(replace('@BACKENDURL@', dest == 'dist' ? backendUrl : devBackendUrl))
   .pipe(uglifycss())
   .pipe(gulp.dest(dest))
   .on('end', function() {

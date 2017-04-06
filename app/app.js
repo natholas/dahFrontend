@@ -31,8 +31,4 @@ var app = angular.module('app', ['ngRoute', 'templates'])
     $rootScope.loaded = true;
   });
 
-  $rootScope.backend_endpoint = "https://dignity-hope.org/";
-  if ($location.$$host == 'dev.dah.local')
-    $rootScope.backend_endpoint = "http://localhost:3000/";
-
 });

@@ -3,19 +3,25 @@ app.service('Entrepreneurs', function(Network, Entrepreneur, $interval, $q, Boot
   var entr = this;
   this.entrepreneurs = {};
   this.getting = {};
+  this.needed = {};
+  this.LIVE = {};
+  this.FUNDED = {};
 
-  this.init = function() {
-    Network.post('end/getentrepreneurs').then(function(response) {
+  this.getentrepreneurs = function(status) {
+    var params = {status: status};
+    Network.post('end/getentrepreneurs', params).then(function(response) {
       if (response) {
-        entr.processEntrepreneurData(response.entrepreneurs);
+        entr.processEntrepreneurData(response.entrepreneurs, status);
       }
     });
   };
 
-  this.processEntrepreneurData = function (entrepreneurs) {
+  this.processEntrepreneurData = function (entrepreneurs, status) {
     for (var i in entrepreneurs) {
-      if (!this.entrepreneurs[entrepreneurs[i].entrepreneurId])
+      if (!this.entrepreneurs[entrepreneurs[i].entrepreneurId]) {
         this.entrepreneurs[entrepreneurs[i].entrepreneurId] = new Entrepreneur(entrepreneurs[i]);
+        this[status][entrepreneurs[i].entrepreneurId] = this.entrepreneurs[entrepreneurs[i].entrepreneurId];
+      }
       else this.entrepreneurs[entrepreneurs[i].entrepreneurId].updateData(entrepreneurs[i]);
     }
     this.dataLoaded = true;
@@ -50,8 +56,12 @@ app.service('Entrepreneurs', function(Network, Entrepreneur, $interval, $q, Boot
     }
   };
 
-  Bootloader.returnWhenLoaded().then(function() {
-    entr.init();
-  });
+  this.needEntrepreneurData = function (status) {
+    if (this.needed[status]) return;
+    this.needed[status] = true;
+    Bootloader.returnWhenLoaded().then(function() {
+      entr.getentrepreneurs(status);
+    });
+  };
 
 });

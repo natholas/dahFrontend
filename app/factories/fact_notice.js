@@ -24,9 +24,13 @@ app.factory("Notice", function($interval, $rootScope) {
     // Otherwise we set majorError to true which will shut the whole front end down and display an error message.
     if (!urgency || urgency < 8) {
       $interval(function() {
-        notifications.remove(notice.id);
+        notice.remove();
       }, duration * 1000, 1);
     } else $rootScope.majorError = true;
+
+    this.remove = function () {
+      notifications.remove(notice.id);
+    }
 
   };
 

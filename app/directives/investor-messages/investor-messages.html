@@ -1,5 +1,5 @@
 <div class="investor-messages">
-  <div class="message" ng-repeat="message in messages | orderBy : '-createdTime'">
+  <div class="message" ng-repeat="message in entrepreneur.messages | orderBy : '-createdTime'">
     <div class="message-text">
       <b>{{message.nickname}} ({{message.amount | money}})</b><br>
       {{message.message}}

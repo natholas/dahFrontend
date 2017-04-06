@@ -1,7 +1,9 @@
-app.factory('ResolveEntrepreneur', function(Entrepreneurs, $route) {
+app.factory('ResolveEntrepreneur', function(Bootloader, Entrepreneurs, $route) {
   return function() {
-    return Entrepreneurs.returnWhenLoaded().then(function() {
-      return Entrepreneurs.entrepreneurs[$route.current.params.entrepreneurId];
-    });
+    return Bootloader.returnWhenLoaded().then(function() {
+      return Entrepreneurs.getEntrepreneur($route.current.params.entrepreneurId*1).then(function(response) {
+        return response;
+      });
+    })
   }
 });
