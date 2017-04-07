@@ -3,7 +3,7 @@
   <span ng-show="account.loginToken">{{account.userDetails.nickname}}</span>
 </button>
 
-<div class="login-content" ng-show="showLoginForm" >
+<div class="login-content" ng-show="showLoginForm" click-outside="showLoginForm = false" outside-if-not="login-toggle">
 
   <button type="button" class="close-button" ng-click="showLoginForm = !showLoginForm">x</button>
   <form name="loginForm" ng-submit="loginForm.$valid && account.login(loginEmailAddress, loginPassword)" ng-show="!account.loginToken" novalidate>
@@ -33,7 +33,6 @@
     <h3 class="bottomless">Hello {{account.userDetails.nickname}}</h3>
     <ul class="un">
       <li><a href="/account" class="full-width">Your account</a></li>
-      <li><a href="/account/investments" class="full-width">Your investments</a></li>
       <li><a href="/account/personaldetails" class="full-width">Your personal details</a></li>
       <li></li>
     </ul>

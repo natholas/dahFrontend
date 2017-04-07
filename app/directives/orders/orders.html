@@ -1,14 +1,25 @@
-<div class="orders row">
-  <a ng-href="/order/{{order.id}}" class="order" ng-repeat="order in orders | objToArray | limitTo : limit">
+<div class="orders">
+  <div class="order" ng-repeat="order in orders | objToArray | orderBy : '-id' | limitTo : limit">
 
-    <div class="order-content">
-      <h3 class="bottomless">{{order.entrepreneur.name}}</h3>
-      <ul class="un">
-        <li>Order <b>#{{order.id | paddNumber : 8}}</b></li>
-        <li>Invested: <b>{{order.amount | money}}</b></li>
-        <li>Donation: <b>{{order.donationAmount | money}}</b></li>
-      </ul>
+    <div class="order-header">
+        {{order.entrepreneur.name}}
+    </div>
+    <div class="order-content row">
+      <div>
+        Order Id: <b>{{order.id | paddNumber : 8}}</b><br>
+        Total: {{order.amount + order.donationAmount | money}}
+      </div>
+
+      <div>
+        Invested: <b>{{order.amount | money}}</b><br>
+        Donation: <b>{{order.donationAmount | money}}</b>
+      </div>
+
+      <div>
+        Method: <b>{{order.displayText}}</b><br>
+        Time: <b>{{order.orderTime | date : 'dd/MM/yy - HH:mm'}}</b>
+      </div>
     </div>
 
-  </a>
+  </div>
 </div>

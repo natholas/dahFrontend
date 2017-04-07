@@ -1,22 +1,32 @@
 .orders {
-  a.order {
-    border: 2px solid #ebf0f0;
+  .order {
+    border: 1px solid $colour-dark;
+    display: block;
+    margin-bottom: #{$gutter*2};
     background-color: #fff;
 
-    @include box(12, false, false);
-
-    @include media($medium-screen) {
-      @include box(6, false, false);
+    .order-header {
+      text-align: center;
+      background: $colour-dark;
+      color: #fff;
+      width: auto;
+      padding: $gutter;
     }
-
-    @include media($large-screen) {
-      @include box(4, false, false);
-    }
-
-    color: inherit;
 
     .order-content {
       padding: $gutter;
+
+      div {
+        @include box(4);
+
+        &:nth-of-type(2) {
+          text-align: center;
+        }
+
+        &:last-child {
+          text-align: right;
+        }
+      }
     }
 
     .entrepreneur-image {

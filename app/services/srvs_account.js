@@ -80,7 +80,7 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
   };
 
   this.processOrders = function (newOrders, orders) {
-    for (var i in newOrders)
+    for (var i in newOrders) 
       orders[newOrders[i].orderId] = new Order(newOrders[i], this);
   };
 

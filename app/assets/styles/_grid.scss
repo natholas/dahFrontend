@@ -69,7 +69,8 @@ $box-sizes : (
     margin-left: 0;
   }
   @else {
-    margin: 0 $gutter;
+    margin-right: $gutter;
+    margin-left: $gutter;
     width: calc(#{$box-size-percentage} - #{$gutter*2});
   }
 }

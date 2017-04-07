@@ -1,10 +1,10 @@
 .invested-entrepreneurs {
 
-
   .entrepreneur {
     position: relative;
     border: 2px solid #ebf0f0;
     overflow: hidden;
+    margin-bottom: #{$gutter*2};
 
     @include box(12, false, false);
 

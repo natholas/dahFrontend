@@ -4,6 +4,6 @@ app.factory('ResolveEntrepreneur', function(Bootloader, Entrepreneurs, $route) {
       return Entrepreneurs.getEntrepreneur($route.current.params.entrepreneurId*1).then(function(response) {
         return response;
       });
-    })
+    });
   }
 });

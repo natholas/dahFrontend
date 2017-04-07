@@ -9,22 +9,16 @@ app.factory("Order", function(Entrepreneurs) {
     this.orderTime = new Date(data.orderTime);
     this.status = data.status;
     this.amount = data.amount;
+    this.displayText = data.displayText;
     this.getEntrepreneur(account);
   };
 
   Order.prototype.getEntrepreneur = function (account) {
     var order = this;
-    Entrepreneurs.returnWhenLoaded().then(function() {
-      if (Entrepreneurs.entrepreneurs[order.entrepreneurId]) {
-        order.entrepreneur = Entrepreneurs.entrepreneurs[order.entrepreneurId];
+    Entrepreneurs.getEntrepreneur(order.entrepreneurId).then(function(response) {
+      if (response) {
+        order.entrepreneur = response;
         order.linkOrderToEntrepreneur(account);
-      } else {
-        Entrepreneurs.getEntrepreneur(order.entrepreneurId).then(function(response) {
-          if (response) {
-            order.entrepreneur = response;
-            order.linkOrderToEntrepreneur(account);
-          }
-        });
       }
     });
   };
