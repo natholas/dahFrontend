@@ -20,6 +20,7 @@
     margin: $gutter #{-$gutter} #{-$gutter} #{-$gutter};
     background-size: cover;
     background-position: center;
+    overflow: hidden;
 
     @include media($medium-screen) {
       margin: 0;

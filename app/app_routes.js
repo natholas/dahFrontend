@@ -43,6 +43,10 @@ app.config(function($routeProvider) {
   .when('/confirmemail', {
     templateUrl: 'pages/confirm-email/confirm-email.html'
   })
+  .when('/resetpassword', {
+    templateUrl: 'pages/reset-password/reset-password.html',
+    controller: 'resetPasswordCtrl'
+  })
   .when('/account', {
     template: '<div ng-include="getTemplate()"></div>',
     controller: 'accountCtrl'

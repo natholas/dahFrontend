@@ -5,11 +5,17 @@
       ng-if="entrepreneur.image"
       class="entrepreneur-image"
       ng-style="{'background-image': 'url(@BACKENDURL@' + entrepreneur.image + ')'}">
+      <div class="tag" ng-show="entrepreneur.accountInvestment">
+        INVESTED
+      </div>
     </div>
     <div
       ng-if="!entrepreneur.image"
       class="entrepreneur-image"
       ng-style="{'background-image': 'url(@BACKENDURL@' + 'images/entrepreneur_default.svg' + ')'}">
+      <div class="tag" ng-show="entrepreneur.accountInvestment">
+        INVESTED
+      </div>
     </div>
   </div>
 </section>
@@ -17,6 +23,13 @@
 <section class="screenblock entrepreneur-description">
   <div class="content">
     <entrepreneur-details data="entrepreneur"></entrepreneur-details>
+  </div>
+</section>
+
+<section class="screenblock dark-colour">
+  <div class="content center">
+    <h2 class="bottomless">You have invested {{entrepreneur.accountInvestment | money}}</h2>
+    in {{entrepreneur.name}}
   </div>
 </section>
 

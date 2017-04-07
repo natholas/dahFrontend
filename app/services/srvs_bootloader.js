@@ -12,7 +12,6 @@ app.service("Bootloader", function(Network, $q, Storage, $interval, Notification
       deferred.resolve(this.visitorToken);
     }
     else Network.post('end/bootloader').then(function(response) {
-      console.log(5);
       if (response) {
         this.visitorToken = Network.visitorToken = response.visitorToken;
         Storage.set('visitorToken', this.visitorToken, true);

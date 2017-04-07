@@ -7,6 +7,7 @@
 
 app.service("Network", function($http, $q, Notifications, $rootScope) {
 
+  var net = this;
   /**
   * @description
   * Does a post request to RFE.
@@ -29,10 +30,15 @@ app.service("Network", function($http, $q, Notifications, $rootScope) {
     $http.post('@BACKENDURL@' + callName, params, configs).then(function(response) {
       if (!response.data.error) {
         deferred.resolve(response.data.data);
-      } else if (!returnError) {
-        Notifications.add(response.data.error, "bad", urgency);
-        deferred.resolve(false);
-      } else deferred.resolve(response.data.error);
+      } else {
+        if (response.data.error == 'LOGIN_TOKEN_EXPIRED') {
+          net.account.logout();
+        }
+        if (!returnError) {
+          Notifications.add(response.data.error, "bad", urgency);
+          deferred.resolve(false);
+        } else deferred.resolve(response.data.error);
+      }
     }, function(err) {
       Notifications.add("error", "bad", urgency);
       deferred.resolve(false);

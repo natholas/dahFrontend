@@ -1,5 +1,5 @@
 <div class="notifications">
-  <div class="notification" ng-repeat="notification in Notifications.data.notifications" ng-click="notification.remove()">
+  <div class="notification {{notification.type}}" ng-class="{removing: notification.removing}" ng-repeat="notification in Notifications.data.notifications" ng-click="notification.removing = true">
     {{notification.message}}
   </div>
 </div>

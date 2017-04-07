@@ -11,6 +11,8 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
   this.signingUp = false;
   this.gettingOrders = false;
 
+  Network.account = this;
+
   this.init = function () {
     if (data = Storage.get('loginData')) {
       acc.loginToken = Network.loginToken = data.loginToken;
@@ -60,8 +62,32 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
       acc.signingUp = false;
       return response;
     });
-
   };
+
+  this.sendResetEmail = function (emailAddress) {
+    if (this.sendingResetEmail) return;
+    this.sendingResetEmail = true;
+    var params = {
+      emailAddress: emailAddress
+    }
+    return Network.post('end/sendpasswordreset', params).then(function(response) {
+      acc.sendingResetEmail = false;
+      return response;
+    });
+  }
+
+  this.resetPassword = function (token, newPassword) {
+    if (this.resetting) return;
+    this.resetting = true;
+    var params = {
+      passwordResetToken: token,
+      newPassword: newPassword,
+    }
+    return Network.post('end/resetpassword', params).then(function(response) {
+      acc.resetting = false;
+      return response;
+    });
+  }
 
   this.getOrders = function () {
     if (this.gettingOrders || !this.loginToken) return;
