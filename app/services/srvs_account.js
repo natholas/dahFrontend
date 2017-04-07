@@ -33,11 +33,7 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
         acc.loginToken = Network.loginToken = response.loginToken;
         acc.role = response.role;
         acc.userDetails = response.userDetails;
-        Storage.set('loginData', {
-          loginToken: acc.loginToken,
-          role: acc.role,
-          userDetails: acc.userDetails
-        }, true);
+        acc.save();
         acc.getOrders();
       }
       return response;
@@ -80,9 +76,28 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
   };
 
   this.processOrders = function (newOrders, orders) {
-    for (var i in newOrders) 
+    for (var i in newOrders)
       orders[newOrders[i].orderId] = new Order(newOrders[i], this);
   };
+
+  this.update = function (params) {
+    return Network.post('end/updateprofile', params).then(function(response) {
+      if (response) {
+        for (var i in acc.userDetails)
+          if (params[i]) acc.userDetails[i] = params[i]
+        acc.save();
+      }
+      return response;
+    });
+  };
+
+  this.save = function () {
+    Storage.set('loginData', {
+      loginToken: acc.loginToken,
+      role: acc.role,
+      userDetails: acc.userDetails
+    }, true);
+  }
 
   Bootloader.returnWhenLoaded().then(function() {
     acc.init();

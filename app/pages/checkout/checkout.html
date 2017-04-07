@@ -11,57 +11,7 @@
         <div ng-if="!Account.loginToken">
           <h3 class="bottomless">Your details</h3>
           <p class="headless">Once your order is complete, you will be able to use the details you enter below to login.</p>
-          <div class="formrow">
-            <div class="formfield field-50">
-              <input
-                type="text"
-                id="nickname"
-                minlength="5"
-                maxlength="20"
-                ng-model="order.user.nickname"
-                name="name"
-                required
-              >
-              <label for="nickname">Your name</label>
-            </div>
-            <div class="formfield field-50">
-              <input
-                type="email"
-                id="email"
-                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}"
-                minlength="7"
-                maxlength="64"
-                name="email"
-                ng-model="order.user.emailAddress"
-                required
-              >
-              <label for="email">Your Email address</label>
-            </div>
-          </div>
-          <div class="formrow">
-            <div class="formfield field-50">
-              <input
-                type="password"
-                id="password"
-                minlength="8"
-                maxlength="128"
-                ng-model="order.user.password"
-                required
-              >
-              <label for="password">Create a Password</label>
-            </div>
-            <div class="formfield field-50">
-              <input
-                type="password"
-                id="repeatPassword"
-                minlength="8"
-                maxlength="128"
-                ng-model="order.user.repeatPassword"
-                required
-              >
-              <label for="repeatPassword">Repeat password</label>
-            </div>
-          </div>
+          <checkout-user-details data="order.user"></checkout-user-details>
         </div>
 
         <h3 class="bottomless">Add a message</h3>

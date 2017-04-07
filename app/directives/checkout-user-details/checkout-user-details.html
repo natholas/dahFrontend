@@ -1,0 +1,53 @@
+<div class="formrow">
+  <div class="formfield field-50">
+    <input
+      type="text"
+      id="nickname"
+      minlength="5"
+      maxlength="20"
+      ng-model="data.nickname"
+      name="name"
+      required
+    >
+    <label for="nickname">Your name</label>
+  </div>
+  <div class="formfield field-50">
+    <input
+      type="email"
+      id="email"
+      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}"
+      minlength="7"
+      maxlength="64"
+      name="email"
+      ng-model="data.emailAddress"
+      required
+    >
+    <label for="email">Your email address</label>
+  </div>
+</div>
+<div class="formrow">
+  <div class="formfield field-50">
+    <input
+      type="password"
+      id="password"
+      minlength="8"
+      maxlength="128"
+      name="new-password"
+      ng-model="data.password"
+      required
+    >
+    <label for="password">Create a password</label>
+  </div>
+  <div class="formfield field-50">
+    <input
+      type="password"
+      id="repeatPassword"
+      minlength="8"
+      maxlength="128"
+      name="new-password"
+      ng-model="data.repeatPassword"
+      required
+    >
+    <label for="repeatPassword">Repeat password</label>
+  </div>
+</div>

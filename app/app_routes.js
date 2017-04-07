@@ -47,6 +47,10 @@ app.config(function($routeProvider) {
     template: '<div ng-include="getTemplate()"></div>',
     controller: 'accountCtrl'
   })
+  .when('/account/profile', {
+    template: '<div ng-include="getTemplate()"></div>',
+    controller: 'profileCtrl'
+  })
 
   .otherwise({
     templateUrl: 'pages/404/404.html'

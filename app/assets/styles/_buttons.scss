@@ -4,7 +4,7 @@ input[type='submit'] {
   background: $colour-primary;
   color: $colour-white;
   border: none;
-  padding: $gutter / 2 $gutter;
+  padding: $gutter/2 $gutter;
   text-transform: uppercase;
   cursor: pointer;
   border-radius: $border-radius;
@@ -19,6 +19,11 @@ input[type='submit'] {
   &.full-width {
     width: 100%;
     padding: $gutter;
+  }
+
+  &.big {
+    padding: $gutter #{$gutter*2};
+    font-size: 20px;
   }
 
   &:not(.close-button):not(.loading):before {
@@ -118,6 +123,7 @@ input[type='submit'] {
 .loading-container {
   perspective: 900px;
   transition: all .2s ease;
+  width: 100%;
 }
 
 @keyframes button-loading {
