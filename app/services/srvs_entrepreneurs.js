@@ -20,9 +20,12 @@ app.service('Entrepreneurs', function(Network, Entrepreneur, $interval, $q, Boot
     for (var i in entrepreneurs) {
       if (!this.entrepreneurs[entrepreneurs[i].entrepreneurId]) {
         this.entrepreneurs[entrepreneurs[i].entrepreneurId] = new Entrepreneur(entrepreneurs[i]);
-        this[status][entrepreneurs[i].entrepreneurId] = this.entrepreneurs[entrepreneurs[i].entrepreneurId];
+        entr.account.linkOrdersToNewEntrepreneur(this.entrepreneurs[entrepreneurs[i].entrepreneurId]);
       }
-      else this.entrepreneurs[entrepreneurs[i].entrepreneurId].updateData(entrepreneurs[i]);
+      else {
+        this.entrepreneurs[entrepreneurs[i].entrepreneurId].updateData(entrepreneurs[i]);
+      }
+      this[status][entrepreneurs[i].entrepreneurId] = this.entrepreneurs[entrepreneurs[i].entrepreneurId];
     }
     this.dataLoaded = true;
   };
@@ -49,6 +52,7 @@ app.service('Entrepreneurs', function(Network, Entrepreneur, $interval, $q, Boot
       return Network.post('end/getentrepreneur', params).then(function(response) {
         if (response) {
           entr.entrepreneurs[entrepreneurId] = new Entrepreneur(response);
+          entr.account.linkOrdersToNewEntrepreneur(entr.entrepreneurs[entrepreneurId]);
           return entr.entrepreneurs[entrepreneurId];
         }
         else return false;

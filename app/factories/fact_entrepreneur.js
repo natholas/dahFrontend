@@ -22,8 +22,8 @@ app.factory('Entrepreneur', function(Network) {
     this.teamName = data.teamName;
     this.countryName = data.countryName;
     this.image = data.image;
-    this.orders = {};
-    this.accountInvestment = 0;
+    if (!this.orders) this.orders = {};
+    if (!this.accountInvestment) this.accountInvestment = 0;
   };
 
   Entrepreneur.prototype.getMessages = function () {

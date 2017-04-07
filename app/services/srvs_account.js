@@ -6,12 +6,12 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
   this.userDetails = null;
   this.orders = {};
   this.investedEntrepreneurs = {};
-
   this.loggingIn = false;
   this.signingUp = false;
   this.gettingOrders = false;
 
   Network.account = this;
+  Entrepreneurs.account = this;
 
   this.init = function () {
     if (data = Storage.get('loginData')) {
@@ -106,11 +106,17 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
       orders[newOrders[i].orderId] = new Order(newOrders[i], this);
   };
 
+  this.linkOrdersToNewEntrepreneur = function (entrepreneur) {
+    for (var i in this.orders) {
+      this.orders[i].linkSelfToNewEntrepreneurs(entrepreneur);
+    }
+  };
+
   this.update = function (params) {
     return Network.post('end/updateprofile', params).then(function(response) {
       if (response) {
         for (var i in acc.userDetails)
-          if (params[i]) acc.userDetails[i] = params[i]
+          if (params[i]) acc.userDetails[i] = params[i];
         acc.save();
       }
       return response;

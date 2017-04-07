@@ -29,5 +29,9 @@ app.factory("Order", function(Entrepreneurs) {
     account.investedEntrepreneurs[this.entrepreneur.id] = this.entrepreneur;
   };
 
+  Order.prototype.linkSelfToNewEntrepreneurs = function (entrepreneur) {
+    
+  }
+
   return Order;
 });
