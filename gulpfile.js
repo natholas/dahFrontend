@@ -18,7 +18,7 @@ var sass = require('gulp-sass');
 var templateCache;
 
 // This value can be updated by running gulp increment
-var v = "4";
+var v = "5";
 var backendUrl = 'https://dignity-hope.org/';
 var devBackendUrl = 'http://localhost:3000/';
 
@@ -166,8 +166,8 @@ function concatJsFiles(dest, callback, preload) {
     'node_modules/angular-route/angular-route.min.js',
     'node_modules/@iamadamjowett/angular-click-outside/clickoutside.directive.js',
     'node_modules/angular-in-viewport/dist/in-viewport.min.js',
-    'node_modules/angular-zxcvbn/dist/angular-zxcvbn.js',
-    'node_modules/zxcvbn/dist/zxcvbn.js',
+    // 'node_modules/angular-zxcvbn/dist/angular-zxcvbn.js',
+    // 'node_modules/zxcvbn/dist/zxcvbn.js',
     'app/*.js',
     'app/**/*.js',
     'app/**/**/*.js'
