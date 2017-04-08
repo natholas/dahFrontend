@@ -1,4 +1,4 @@
-app.factory('ResolveCheckout', function(Bootloader, Entrepreneurs, $route) {
+app.factory('ResolveCheckout', function(Bootloader, Entrepreneurs, $route, Storage) {
   return function() {
     return Bootloader.returnWhenLoaded().then(function() {
       return Entrepreneurs.getEntrepreneur($route.current.params.entrepreneurId*1).then(function(response) {
@@ -8,10 +8,13 @@ app.factory('ResolveCheckout', function(Bootloader, Entrepreneurs, $route) {
           if (entrepreneur.stillNeeded < amount) {
             amount = entrepreneur.stillNeeded*1;
           }
+          var tempOrderData = Storage.get('tempOrderData');
+          Storage.remove('tempOrderData');
           return {
             entrepreneur: entrepreneur,
             amount: amount,
-            donationAmount: 2,
+            donationAmount: tempOrderData ? tempOrderData.donationAmount : 2,
+            message: tempOrderData ? tempOrderData.message : '',
             user: {}
           }
         }

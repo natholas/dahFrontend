@@ -163,6 +163,7 @@ function concatJsFiles(dest, callback, preload) {
     'node_modules/angular/angular.min.js',
     'node_modules/angular-route/angular-route.min.js',
     'node_modules/@iamadamjowett/angular-click-outside/clickoutside.directive.js',
+    'node_modules/angular-in-viewport/dist/in-viewport.min.js',
     'app/*.js',
     'app/**/*.js',
     'app/**/**/*.js'

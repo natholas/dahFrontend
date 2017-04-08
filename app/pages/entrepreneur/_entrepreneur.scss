@@ -21,6 +21,7 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    position: relative;
 
     @include media($medium-screen) {
       margin: 0;

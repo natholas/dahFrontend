@@ -1,54 +1,63 @@
-<section class="screenblock light-colour entrepreneur-top">
-  <div class="content">
-    <h1 class="bottomless">{{entrepreneur.name}}</h1>
-    <div
-      ng-if="entrepreneur.image"
-      class="entrepreneur-image"
-      ng-style="{'background-image': 'url(@BACKENDURL@' + entrepreneur.image + ')'}">
-      <div class="tag" ng-show="entrepreneur.accountInvestment">
-        INVESTED
-      </div>
-    </div>
-    <div
-      ng-if="!entrepreneur.image"
-      class="entrepreneur-image"
-      ng-style="{'background-image': 'url(@BACKENDURL@' + 'images/entrepreneur_default.svg' + ')'}">
-      <div class="tag" ng-show="entrepreneur.accountInvestment">
-        INVESTED
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="screenblock entrepreneur-description">
-  <div class="content">
-    <entrepreneur-details data="entrepreneur"></entrepreneur-details>
-  </div>
-</section>
-
-<section class="screenblock dark-colour" ng-show="entrepreneur.accountInvestment">
-  <div class="content center">
-    <h2 class="bottomless">You have invested {{entrepreneur.accountInvestment | money}}</h2>
-    in {{entrepreneur.name}} so far.
-  </div>
-</section>
-
-<section class="screenblock primary-colour">
-  <div class="content">
-    <location country="entrepreneur.countryName" country-id="entrepreneur.countryId"></location>
-  </div>
-</section>
-
 <div viewport="window">
-  <section class="screenblock">
+  <section class="screenblock light-colour entrepreneur-top">
     <div class="content">
-      <h2>{{entrepreneur.investorCount}} <span ng-show="entrepreneur.investorCount != 1">people have</span><span ng-show="entrepreneur.investorCount == 1">person has</span> invested in {{entrepreneur.name}}.</h2>
-      <investor-messages data="entrepreneur"></investor-messages>
-      <div class="center" ng-show="entrepreneur.status == 'LIVE'">
-        <br>
-        <p class="">Invest to add your own message</p>
-        <a ng-href="/checkout/{{entrepreneur.id}}/5" class="button">Invest</a>
+      <h1 class="bottomless">{{entrepreneur.name}}</h1>
+      <div
+        ng-if="entrepreneur.image"
+        class="entrepreneur-image"
+        ng-style="{'background-image': 'url(@BACKENDURL@' + entrepreneur.image + ')'}">
+        <div class="tag" ng-show="entrepreneur.accountInvestment">
+          INVESTED
+        </div>
+      </div>
+      <div
+        ng-if="!entrepreneur.image"
+        class="entrepreneur-image"
+        ng-style="{'background-image': 'url(@BACKENDURL@' + 'images/entrepreneur_default.svg' + ')'}">
+        <div class="tag" ng-show="entrepreneur.accountInvestment">
+          INVESTED
+        </div>
       </div>
     </div>
   </section>
+
+  <section class="screenblock entrepreneur-description">
+    <div class="content">
+      <entrepreneur-details data="entrepreneur"></entrepreneur-details>
+    </div>
+  </section>
+
+  <section class="screenblock dark-colour" ng-show="entrepreneur.accountInvestment">
+    <div class="content center">
+      <h2 class="bottomless">You have invested {{entrepreneur.accountInvestment | money}}</h2>
+      in {{entrepreneur.name}} so far.
+    </div>
+  </section>
+
+  <section class="screenblock primary-colour" viewport-enter="showLocation = true">
+    <div class="content">
+      <location ng-if="showLocation" country-id="entrepreneur.countryId"></location>
+    </div>
+  </section>
+
+  <div>
+    <section class="screenblock">
+      <div class="content">
+        <h2>{{entrepreneur.investorCount}} <span ng-show="entrepreneur.investorCount != 1">people have</span><span ng-show="entrepreneur.investorCount == 1">person has</span> invested in {{entrepreneur.name}}.</h2>
+        <investor-messages data="entrepreneur"></investor-messages>
+        <div class="center" ng-show="entrepreneur.status == 'LIVE'">
+          <br>
+          <p class="">Invest to add your own message</p>
+          <a ng-href="/checkout/{{entrepreneur.id}}/5" class="button">Invest</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="screenblock dark-colour" viewport-enter="showTeam = true">
+    <div class="content">
+      <team ng-if="showTeam" team-id="entrepreneur.teamId"></team>
+    </div>
+  </section>
+
 </div>

@@ -46,6 +46,12 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
     this.loginToken = null;
     this.role = null;
     this.userDetails = null;
+    this.orders = {};
+    this.investedEntrepreneurs = {};
+    for (var i in Entrepreneurs.entrepreneurs) {
+      Entrepreneurs.entrepreneurs[i].orders = {};
+      Entrepreneurs.entrepreneurs[i].accountInvestment = 0;
+    }
     Storage.remove('loginData');
   };
 
@@ -94,7 +100,7 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
     this.gettingOrders = true;
 
     Network.post('end/getorders').then(function(response) {
-      this.gettingOrders = false;
+      acc.gettingOrders = false;
       if (response) {
         acc.processOrders(response.orders, acc.orders);
       }

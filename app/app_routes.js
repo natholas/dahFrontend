@@ -34,11 +34,13 @@ app.config(function($routeProvider) {
       }
     }
   })
-  .when('/confirmation', {
-    templateUrl: 'pages/confirmation/confirmation.html'
+  .when('/confirmation/:orderId', {
+    template: '<div ng-include="getTemplate()"></div>',
+    controller: 'confirmationCtrl'
   })
   .when('/paymentfailed', {
-    templateUrl: 'pages/payment-failed/payment-failed.html'
+    template: '',
+    controller: 'paymentFailedCtrl'
   })
   .when('/confirmemail', {
     templateUrl: 'pages/confirm-email/confirm-email.html'

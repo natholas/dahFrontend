@@ -35,6 +35,7 @@ app.service('Checkout', function(Network, Account, Storage, Notifications) {
       donationAmount: order.donationAmount,
       message: order.message ? order.message : ''
     };
+    Storage.set('tempOrderData', params, true);
     Network.post('end/ordercomplete', params).then(function(response) {
       if (response) {
         Storage.set('orderData', order, true);

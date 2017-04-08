@@ -11,16 +11,14 @@ app.service("Bootloader", function(Network, $q, Storage, $interval, Notification
       boot.dataLoaded = true;
       deferred.resolve(this.visitorToken);
     }
-    else Network.post('end/bootloader').then(function(response) {
+    else Network.post('end/bootloader', {}, 8, true).then(function(response) {
       if (response) {
         this.visitorToken = Network.visitorToken = response.visitorToken;
         Storage.set('visitorToken', this.visitorToken, true);
         boot.dataLoaded = true;
         deferred.resolve(this.visitorToken);
       }
-      else {
-        Notifications.add('There was a technical error. Please try again later', 'bad', 10);
-      }
+      else Notifications.add('There was a technical error. Please try again later', 'bad', 10);
     });
     return deferred.promise;
   };

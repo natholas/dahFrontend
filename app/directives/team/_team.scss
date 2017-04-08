@@ -1,0 +1,35 @@
+.team {
+  .team-info {
+
+    align-self: center;
+
+    @include box(12);
+    @include media($medium-screen) {
+      @include box(8);
+    }
+
+    @include media($large-screen) {
+      @include box(9);
+    }
+
+  }
+  .team-img {
+    @include box(12);
+    @include media($medium-screen) {
+      @include box(4);
+    }
+
+    @include media($large-screen) {
+      @include box(3);
+    }
+
+    align-self: center;
+
+
+    img {
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}

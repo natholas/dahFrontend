@@ -40,8 +40,10 @@ app.service("Network", function($http, $q, Notifications, $rootScope) {
         } else deferred.resolve(response.data.error);
       }
     }, function(err) {
-      Notifications.add("error", "bad", urgency);
-      deferred.resolve(false);
+      if (!returnError) {
+        Notifications.add("error", "bad", urgency);
+        deferred.resolve(false);
+      } else deferred.resolve(false);
     });
     return deferred.promise;
   };

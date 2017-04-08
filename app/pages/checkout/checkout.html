@@ -26,11 +26,22 @@
 
       <div class="sidebar">
         <h3>Overview</h3>
-        <div class="formfield field-100">
-          <select ng-model="order.donationAmount" id="donation-amount">
-            <option ng-repeat="amount in donationAmounts" ng-value="amount">{{amount | money}}</option>
-          </select>
-          <label for="donation-amount">Donation to dignity & hope</label>
+        <div class="formrow">
+          <div class="formfield field-100">
+            <select ng-model="order.amount" id="investment-amount">
+              <option ng-repeat="amount in amounts" ng-value="amount">{{amount | money}}</option>
+            </select>
+            <label for="investment-amount">Investment amount</label>
+          </div>
+        </div>
+        <br>
+        <div class="formrow">
+          <div class="formfield field-100">
+            <select ng-model="order.donationAmount" id="donation-amount">
+              <option ng-repeat="amount in donationAmounts" ng-value="amount">{{amount | money}}</option>
+            </select>
+            <label for="donation-amount">Donation to dignity & hope</label>
+          </div>
         </div>
 
         <ul class="un">
