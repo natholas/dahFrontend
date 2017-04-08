@@ -12,7 +12,7 @@ app.directive('entrepreneurDetails', function() {
         }
       }
 
-      $scope.amounts.push($scope.entrepreneur.stillNeeded);
+      $scope.amounts.push($scope.entrepreneur.stillNeeded*1);
       $scope.investmentAmount = $scope.amounts[0];
     }
   }

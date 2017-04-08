@@ -14,9 +14,9 @@ app.controller('checkoutCtrl', function($scope, order, Checkout, Account) {
     }
   }
 
-  $scope.amounts.push($scope.order.entrepreneur.stillNeeded);
+  $scope.amounts.push($scope.order.entrepreneur.stillNeeded*1);
 
-  if ($scope.amounts.indexOf($scope.order.amount) < 0) {
+  if ($scope.amounts.indexOf($scope.order.amount*1) < 0) {
     $scope.order.amount = $scope.amounts[0];
   }
 

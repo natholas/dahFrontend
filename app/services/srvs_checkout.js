@@ -31,7 +31,7 @@ app.service('Checkout', function(Network, Account, Storage, Notifications) {
   this.doOrder = function (order) {
     var params = {
       entrepreneurId: order.entrepreneur.id,
-      amount: order.amount,
+      amount: order.amount*1,
       donationAmount: order.donationAmount,
       message: order.message ? order.message : ''
     };

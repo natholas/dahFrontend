@@ -441,6 +441,44 @@ select:-webkit-autofill {
 }
 
 
+
+input[type='password'] + label + .passwordStrength {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 14px;
+  right: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+}
+
+input[type='password'].ng-not-empty + label + .passwordStrength {
+  &.strength_0 {
+    background-image: url('/assets/images/strength_0_@version@.svg');
+  }
+
+  &.strength_1 {
+    background-image: url('/assets/images/strength_1_@version@.svg');
+  }
+
+  &.strength_2 {
+    background-image: url('/assets/images/strength_2_@version@.svg');
+  }
+
+  &.strength_3 {
+    background-image: url('/assets/images/strength_3_@version@.svg');
+  }
+
+  &.strength_4 {
+    background-image: url('/assets/images/strength_4_@version@.svg');
+  }
+}
+
+
+
+
 // 13. custom radio & checbox ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 input[type='radio'],

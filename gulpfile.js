@@ -38,6 +38,7 @@ gulp.task('dist', ['clean-dist-folder'], function() {
   }, true);
   move('app/assets/fonts/*', 'dist/assets/fonts');
   move('app/assets/icons/*', 'dist/assets/icons');
+  move('app/assets/images/logo.jpg', 'dist/assets/images');
   move('app/.htaccess', 'dist');
   optimizeImages(function() {
     moveV(['app/assets/images/*.*', 'app/assets/images/**/*.*'], 'dist/assets/images');
@@ -76,6 +77,7 @@ gulp.task('dev', ['clean-dev-folder'], function() {
   }, false);
   move('app/assets/fonts/*', 'dev/assets/fonts');
   move('app/assets/icons/*', 'dev/assets/icons');
+  move('app/assets/images/logo.jpg', 'dev/assets/images');
   move('app/.htaccess', 'dev');
   moveV(['app/assets/images/*.*', 'app/assets/images/**/*.*'], 'dev/assets/images');
 
@@ -164,6 +166,8 @@ function concatJsFiles(dest, callback, preload) {
     'node_modules/angular-route/angular-route.min.js',
     'node_modules/@iamadamjowett/angular-click-outside/clickoutside.directive.js',
     'node_modules/angular-in-viewport/dist/in-viewport.min.js',
+    'node_modules/angular-zxcvbn/dist/angular-zxcvbn.js',
+    'node_modules/zxcvbn/dist/zxcvbn.js',
     'app/*.js',
     'app/**/*.js',
     'app/**/**/*.js'

@@ -1,0 +1,14 @@
+.statistics {
+  .statistic {
+    @include box(12);
+    @include media($medium-screen) {
+      @include box(4);
+    }
+    color: $colour-dark;
+    // text-align: center;
+    background-color: $colour-light;
+    margin-bottom: $gutter*2;
+    padding: $gutter;
+    border-radius: 4px;
+  }
+}

@@ -28,7 +28,10 @@ app.controller('profileCtrl', function($scope, Account, Notifications) {
     if (!Object.size(params)) return;
 
     Account.update(params).then(function(response) {
-      if (response) Notifications.add('saved', 'good');
+      if (response) {
+        Notifications.add('saved', 'good');
+        $scope.reset();
+      }
     });
 
   };

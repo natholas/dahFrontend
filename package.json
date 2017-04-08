@@ -12,7 +12,9 @@
     "@iamadamjowett/angular-click-outside": "^2.10.1",
     "angular": "^1.6.3",
     "angular-in-viewport": "^1.1.0",
-    "angular-route": "^1.6.3"
+    "angular-route": "^1.6.3",
+    "angular-zxcvbn": "^3.2.2",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "add-stream": "^1.0.0",

@@ -31,10 +31,11 @@
     <input
       type="password"
       id="password"
-      minlength="8"
+      minlength="5"
       maxlength="128"
       name="new-password"
       ng-model="data.password"
+      ng-model-options="{allowInvalid: true}"
       ng-focus="data.password == dummyPassword && (data.password = '')"
       ng-blur="!data.password && (data.password = dummyPassword)"
       required
@@ -45,11 +46,13 @@
     <input
       type="password"
       id="repeatPassword"
-      minlength="8"
+      minlength="5"
       maxlength="128"
       name="new-password"
       ng-model="data.repeatPassword"
+      ng-model-options="{allowInvalid: true}"
       ng-required="data.password != dummyPassword"
+      equals="{{data.password}}"
     >
     <label for="repeatPassword">Repeat password</label>
   </div>

@@ -30,22 +30,27 @@
     <input
       type="password"
       id="password"
-      minlength="8"
+      minlength="5"
       maxlength="128"
       name="new-password"
       ng-model="data.password"
+      ng-model-options="{allowInvalid: true}"
       required
+      zxcvbn="passwordStrength"
+      zx-extras="[data.emailAddress, data.nickname]"
     >
     <label for="password">Create a password</label>
+    <div class="passwordStrength strength_{{passwordStrength.score}}"></div>
   </div>
   <div class="formfield field-50">
     <input
       type="password"
       id="repeatPassword"
-      minlength="8"
+      minlength="5"
       maxlength="128"
       name="new-password"
       ng-model="data.repeatPassword"
+      equals="{{data.password}}"
       required
     >
     <label for="repeatPassword">Repeat password</label>

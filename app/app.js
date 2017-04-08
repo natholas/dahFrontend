@@ -1,5 +1,5 @@
 angular.module('templates', []);
-var app = angular.module('app', ['ngRoute', 'templates', 'angular-click-outside', 'in-viewport'])
+var app = angular.module('app', ['ngRoute', 'templates', 'angular-click-outside', 'in-viewport', 'zxcvbn'])
 
 .config(function($routeProvider, $locationProvider, $httpProvider) {
   $locationProvider.html5Mode(true);
