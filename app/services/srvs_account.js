@@ -144,7 +144,7 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
       loginToken: acc.loginToken,
       role: acc.role,
       userDetails: acc.userDetails
-    }, true);
+    });
   }
 
   Bootloader.returnWhenLoaded().then(function() {
