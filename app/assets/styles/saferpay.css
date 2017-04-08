@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+html.theme-six {
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #ebf0f0;
+}
+
+.theme-six:before {
+  display: none;
+}
+
+html body .box-content .box-main {
+  border: none;
+  box-shadow: none;
+}
+
+.btn.btn-next {
+  background-color: #3597d3;
+}
+
+.btn.btn-next:active, .btn.btn-next:hover, .btn.btn-next:focus {
+  background-color: #2880b8;
+}
+
+html body footer .navitem a {
+  color: #e84c3d;
+}
+
+html body .box-content .box-main .box-payment {
+  background-image: url('https://dignityhope.org/assets/images/logo.jpg');
+  background-repeat: no-repeat;
+  background-position: top 10px center;
+  background-size: 70px;
+  padding-top: 130px;
+}
+
+.page-paymentselection main ul li button.btn-select {
+  border: none;
+  /*background-color: #ebf0f0;*/
+  border: 2px solid #ebf0f0;
+}
+
+.page-paymentselection main ul li button.btn-select:active,
+.page-paymentselection main ul li button.btn-select:hover,
+.page-paymentselection main ul li button.btn-select:focus {
+  background-color: #ebf0f0;
+  border: 2px solid #ebf0f0;
+  box-shadow: none;
+}
+
+html body .box-content .box-main .box-payment {
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+@media (max-width: 767px) {
+  html body .box-content .box-main .box-payment {
+    border: 2px solid #ebf0f0;
+  }
+}
+
+@media (min-width: 768px) {
+  html body .box-content .box-main {
+    direction: rtl;
+  }
+  html body .box-content .box-main>.page {
+    direction: ltr;
+  }
+}
+
+html body .box-content .box-main .box-payment .icon-hint {
+  padding: 0 10px;
+}

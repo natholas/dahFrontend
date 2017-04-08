@@ -37,7 +37,9 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
         acc.userDetails = response.userDetails;
         acc.save();
         acc.getOrders();
+        ga('send', 'event', 'account', 'login', 'success');
       }
+      else ga('send', 'event', 'account', 'login', 'failed');
       return response;
     });
   };
@@ -53,6 +55,7 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
       Entrepreneurs.entrepreneurs[i].accountInvestment = 0;
     }
     Storage.remove('loginData');
+    ga('send', 'event', 'account', 'logout', 'success');
   };
 
   this.signup = function (emailAddress, password, nickname, publicStatus) {
@@ -66,6 +69,8 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
     }
     return Network.post('end/signup', params).then(function(response) {
       acc.signingUp = false;
+      if (response) ga('send', 'event', 'account', 'signup', 'success');
+      else ga('send', 'event', 'account', 'signup', 'failed');
       return response;
     });
   };
@@ -78,6 +83,8 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
     }
     return Network.post('end/sendpasswordreset', params).then(function(response) {
       acc.sendingResetEmail = false;
+      if (response) ga('send', 'event', 'account', 'sendreset', 'success');
+      else ga('send', 'event', 'account', 'sendreset', 'failed');
       return response;
     });
   }
@@ -91,6 +98,8 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
     }
     return Network.post('end/resetpassword', params).then(function(response) {
       acc.resetting = false;
+      if (response) ga('send', 'event', 'account', 'resetpassword', 'success');
+      else ga('send', 'event', 'account', 'resetpassword', 'failed');
       return response;
     });
   }
@@ -124,6 +133,7 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
         for (var i in acc.userDetails)
           if (params[i]) acc.userDetails[i] = params[i];
         acc.save();
+        if (response) ga('send', 'event', 'account', 'update', 'success');
       }
       return response;
     });

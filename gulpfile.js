@@ -40,6 +40,7 @@ gulp.task('dist', ['clean-dist-folder'], function() {
   move('app/assets/icons/*', 'dist/assets/icons');
   move('app/assets/images/logo.jpg', 'dist/assets/images');
   move('app/assets/images/logo-image.jpg', 'dist/assets/images');
+  move('app/assets/styles/saferpay.css', 'dist');
   move('app/.htaccess', 'dist');
   optimizeImages(function() {
     moveV(['app/assets/images/*.*', 'app/assets/images/**/*.*'], 'dist/assets/images');
@@ -80,6 +81,7 @@ gulp.task('dev', ['clean-dev-folder'], function() {
   move('app/assets/icons/*', 'dev/assets/icons');
   move('app/assets/images/logo.jpg', 'dev/assets/images');
   move('app/assets/images/logo-image.jpg', 'dev/assets/images');
+  move('app/assets/styles/saferpay.css', 'dev');
   move('app/.htaccess', 'dev');
   moveV(['app/assets/images/*.*', 'app/assets/images/**/*.*'], 'dev/assets/images');
 
@@ -172,7 +174,8 @@ function concatJsFiles(dest, callback, preload) {
     // 'node_modules/zxcvbn/dist/zxcvbn.js',
     'app/*.js',
     'app/**/*.js',
-    'app/**/**/*.js'
+    'app/**/**/*.js',
+    'app/google-analytics.js',
   ])
   .pipe(addStream.obj(prepareTemplates(preload)))
   .pipe(concat('main_' + v + '.js'))
