@@ -39,6 +39,7 @@ gulp.task('dist', ['clean-dist-folder'], function() {
   move('app/assets/fonts/*', 'dist/assets/fonts');
   move('app/assets/icons/*', 'dist/assets/icons');
   move('app/assets/images/logo.jpg', 'dist/assets/images');
+  move('app/assets/images/logo-image.jpg', 'dist/assets/images');
   move('app/.htaccess', 'dist');
   optimizeImages(function() {
     moveV(['app/assets/images/*.*', 'app/assets/images/**/*.*'], 'dist/assets/images');
@@ -78,6 +79,7 @@ gulp.task('dev', ['clean-dev-folder'], function() {
   move('app/assets/fonts/*', 'dev/assets/fonts');
   move('app/assets/icons/*', 'dev/assets/icons');
   move('app/assets/images/logo.jpg', 'dev/assets/images');
+  move('app/assets/images/logo-image.jpg', 'dev/assets/images');
   move('app/.htaccess', 'dev');
   moveV(['app/assets/images/*.*', 'app/assets/images/**/*.*'], 'dev/assets/images');
 
