@@ -63,7 +63,7 @@ html body .box-content .box-main .box-payment {
   html body .box-content .box-main {
     direction: rtl;
   }
-  html body .box-content .box-main>.page {
+  html body .box-content .box-main > * {
     direction: ltr;
   }
 }
