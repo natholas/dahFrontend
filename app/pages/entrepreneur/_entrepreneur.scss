@@ -22,6 +22,7 @@
     background-position: center;
     overflow: hidden;
     position: relative;
+    background-color: $colour-light;
 
     @include media($medium-screen) {
       margin: 0;

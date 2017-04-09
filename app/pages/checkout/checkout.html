@@ -21,7 +21,6 @@
             <label for="message">Message</label>
           </div>
         </div>
-
       </div>
 
       <div class="sidebar">
@@ -54,13 +53,16 @@
             <b class="headless">{{order.donationAmount | money}}</b>
           </li>
           <li>
-            <b class="small">Total</b><br>
+            <b class="small">Total</b>
             <h3 class="headless">{{order.amount + order.donationAmount | money}}</h3>
           </li>
         </ul>
         <br>
+        <div class="terms">
+          By clicking the "CONTINUE" button below, you are agreeing to the <a href="/terms" target="_blank">Terms and conditions</a>.
+        </div>
         <div class="loading-container">
-          <button class="full-width" ng-class="{loading : Checkout.checkingOut}">To payment</button>
+          <button class="full-width" ng-class="{loading : Checkout.checkingOut}">Continue</button>
         </div>
       </div>
 

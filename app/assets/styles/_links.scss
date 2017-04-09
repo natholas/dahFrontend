@@ -28,6 +28,13 @@ a:not(.button) {
     }
   }
 
+  &.white {
+    color: #fff;
+    &:after {
+      border-color: #fff;
+    }
+  }
+
   &:hover {
     &:after {
       width: 100%;

@@ -3,5 +3,12 @@ footer {
     padding: 0;
     background-color: $colour-dark;
     color: #fff;
+
+    .copyright {
+      float: left;
+    }
+    .links {
+      float: right;
+    }
   }
 }

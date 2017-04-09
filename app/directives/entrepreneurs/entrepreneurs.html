@@ -1,5 +1,5 @@
 <div class="entrepreneurs row">
-  <a class="entrepreneur" ng-repeat="entrepreneur in data.entrepreneurs | objToArray | orderBy : '-stillNeeded' | filter : {status: status}" ng-href="/entrepreneur/{{entrepreneur.id}}">
+  <a class="entrepreneur" ng-repeat="entrepreneur in data.entrepreneurs | objToArray | orderBy : (entrepreneur.status == 'LIVE' ? '-stillNeeded' : '-fundedTime') | filter : {status: status}" ng-href="/entrepreneur/{{entrepreneur.id}}">
     <div class="tag" ng-show="entrepreneur.accountInvestment">
       INVESTED
     </div>
@@ -17,7 +17,9 @@
       <h3>{{entrepreneur.name}}</h3>
       <p>{{entrepreneur.description | limitTo: 100}}</p>
     </div>
-    <div class="entrepreneur-meta">
+
+    <!-- LIVE -->
+    <div class="entrepreneur-meta" ng-show="entrepreneur.status == 'LIVE'">
       <div class="info-box">
         {{entrepreneur.city}} {{entrepreneur.countryName}}
       </div>
@@ -30,6 +32,25 @@
         <div>
           <b>{{entrepreneur.totalInvested | money}}</b><br>
           invested
+        </div>
+        <clearfix></clearfix>
+      </div>
+    </div>
+
+    <!-- FUNDED -->
+    <div class="entrepreneur-meta" ng-show="entrepreneur.status == 'FUNDED'">
+      <div class="info-box">
+        {{entrepreneur.city}} {{entrepreneur.countryName}}
+      </div>
+      <hr>
+      <div class="info-box">
+        <div>
+          raised<br>
+          <b>{{entrepreneur.amountNeeded | money}}</b>
+        </div>
+        <div>
+          Funded on<br>
+          <b>{{entrepreneur.fundedTime | date}}</b>
         </div>
         <clearfix></clearfix>
       </div>

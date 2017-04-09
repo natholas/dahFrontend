@@ -18,7 +18,7 @@ var sass = require('gulp-sass');
 var templateCache;
 
 // This value can be updated by running gulp increment
-var v = "5";
+var v = "6";
 var backendUrl = 'https://dignity-hope.org/';
 var devBackendUrl = 'http://localhost:3000/';
 
@@ -38,6 +38,7 @@ gulp.task('dist', ['clean-dist-folder'], function() {
   }, true);
   move('app/assets/fonts/*', 'dist/assets/fonts');
   move('app/assets/icons/*', 'dist/assets/icons');
+  move('app/assets/pdfs/*', 'dist/assets/pdfs');
   move('app/assets/images/logo.jpg', 'dist/assets/images');
   move('app/assets/images/logo-image.jpg', 'dist/assets/images');
   move('app/assets/styles/saferpay.css', 'dist');
@@ -79,6 +80,7 @@ gulp.task('dev', ['clean-dev-folder'], function() {
   }, false);
   move('app/assets/fonts/*', 'dev/assets/fonts');
   move('app/assets/icons/*', 'dev/assets/icons');
+  move('app/assets/pdfs/*', 'dev/assets/pdfs');
   move('app/assets/images/logo.jpg', 'dev/assets/images');
   move('app/assets/images/logo-image.jpg', 'dev/assets/images');
   move('app/assets/styles/saferpay.css', 'dev');

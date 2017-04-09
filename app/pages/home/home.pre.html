@@ -21,6 +21,15 @@
 
 <section class="screenblock dark-colour">
   <div class="content">
+    <img src="/assets/images/video-preview_@version@.jpg" class="video-preview" ng-show="!playVideo" ng-click="playVideo = true" alt="">
+    <div class="youtube-video-container" ng-if="playVideo">
+      <iframe width="853" height="480" class="youtube-video" src="https://www.youtube.com/embed/E6GCOCbzf_k?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="screenblock">
+  <div class="content">
     <h1>How it works</h1>
     <h3 class="bottomless">SELECT A START-UP</h3>
     <p class="headless">
