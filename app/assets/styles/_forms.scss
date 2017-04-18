@@ -632,3 +632,21 @@ input[type='checkbox']{
     }
   }
 }
+
+.predictions {
+  border: 1px solid $colour-light;
+
+  b {
+    padding: $gutter;
+    display: block;
+  }
+
+  .prediction {
+    cursor: pointer;
+    padding: #{$gutter/2} $gutter;
+
+    &:hover {
+      background-color: $colour-light;
+    }
+  }
+}

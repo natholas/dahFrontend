@@ -58,13 +58,14 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
     ga('send', 'event', 'account', 'logout', 'success');
   };
 
-  this.signup = function (emailAddress, password, nickname, publicStatus) {
+  this.signup = function (emailAddress, nickname, address, password, publicStatus) {
     if (this.signingUp) return;
     this.signingUp = true;
     var params = {
       emailAddress: emailAddress,
-      password: password,
       nickname: nickname,
+      address: address,
+      password: password,
       publicStatus: publicStatus
     }
     return Network.post('end/signup', params).then(function(response) {

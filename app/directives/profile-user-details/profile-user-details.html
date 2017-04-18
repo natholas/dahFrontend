@@ -25,7 +25,28 @@
     <label for="email">Your Email address</label>
   </div>
 </div>
-
+<div class="formrow">
+  <div class="formfield field-100">
+    <input
+      type="text"
+      ng-model="data.address"
+      data="data"
+      id="address"
+      minlength="5"
+      required
+      address
+      predictions="data.predictions"
+      autocomplete="off"
+      >
+    <label for="address">Your full address</label>
+  </div>
+  <div class="predictions" ng-show="data.predictions.length">
+    <b>Please select your address</b>
+    <div class="prediction" ng-repeat="prediction in data.predictions" ng-click="prediction.pick(prediction.description)">
+      {{prediction.description}}
+    </div>
+  </div>
+</div>
 <div class="formrow">
   <div class="formfield field-50">
     <input

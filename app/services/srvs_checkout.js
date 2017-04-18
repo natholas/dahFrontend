@@ -10,8 +10,9 @@ app.service('Checkout', function(Network, Account, Storage, Notifications) {
     else {
       Account.signup(
         order.user.emailAddress.toLowerCase(),
-        order.user.password,
         order.user.nickname,
+        order.user.address,
+        order.user.password,
         'PUBLIC'
       ).then(function(response) {
         if (response) {
