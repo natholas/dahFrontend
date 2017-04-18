@@ -18,7 +18,7 @@ var sass = require('gulp-sass');
 var templateCache;
 
 // This value can be updated by running gulp increment
-var v = "7";
+var v = "8";
 var backendUrl = 'https://dignity-hope.org/';
 var devBackendUrl = 'http://localhost:3000/';
 
