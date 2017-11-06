@@ -2,7 +2,8 @@
   <section class="screenblock light-colour entrepreneur-top">
     <div class="content">
       <div class="next-to-image">
-        <a href="/entrepreneurs">View all entrepreneurs</a>
+        <a href="/entrepreneurs" ng-show="entrepreneur.status == 'LIVE'">View all entrepreneurs</a>
+        <a href="/success-stories" ng-show="entrepreneur.status != 'LIVE'">View all success stories</a>
         <h1 class="bottomless headless">{{entrepreneur.name}}</h1>
       </div>
       <div
@@ -33,7 +34,7 @@
   <section class="screenblock dark-colour" ng-show="entrepreneur.accountInvestment">
     <div class="content center">
       <h2 class="bottomless">You have invested {{entrepreneur.accountInvestment | money}}</h2>
-      in {{entrepreneur.name}} so far.
+      in {{entrepreneur.name}}<span ng-show="entrepreneur.status == 'LIVE'"> so far</span>.
     </div>
   </section>
 

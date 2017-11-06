@@ -203,3 +203,7 @@ figure {
     @include box(3, false, false);
   }
 }
+
+.align-right {
+  text-align: right;
+}

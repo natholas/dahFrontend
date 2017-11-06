@@ -15,10 +15,12 @@
         </div>
 
         <h3 class="bottomless">Add a message</h3>
+        <p class="headless bottomless">This message will be added on {{order.entrepreneurs.name}}'s entrepreneurs page. (optional)</p>
         <div class="formrow">
           <div class="formfield field-100">
             <textarea if="message" rows="6" ng-model="order.message" maxlength="280"></textarea>
             <label for="message">Message</label>
+            <p class="terms headless align-right">{{280 - order.message.length}} characters left</p>
           </div>
         </div>
       </div>

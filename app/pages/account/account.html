@@ -11,7 +11,6 @@
     <div class="center">
       <br>
       <a href ng-show="(account.investedEntrepreneurs | objSize) > entrepreneurLimit" ng-click="entrepreneurLimit = entrepreneurLimit + 9" class="button">Load more</a>
-      <span ng-show="(account.investedEntrepreneurs | objSize) <= entrepreneurLimit">All loaded</span>
     </div>
   </div>
 </section>
@@ -23,7 +22,6 @@
     <div class="center">
       <br>
       <a href ng-show="(account.orders | objSize) > orderLimit" ng-click="orderLimit = orderLimit + 9" class="button">Load more</a>
-      <span ng-show="(account.orders | objSize) <= orderLimit">All loaded</span>
     </div>
   </div>
 </section>
