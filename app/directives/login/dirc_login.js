@@ -17,6 +17,11 @@ app.directive('login', function() {
         });
       }
 
+      $scope.$watch('showLoginForm', function() {
+        $scope.forgot = false;
+        $scope.reset = false;
+      })
+
     }
   }
 });
