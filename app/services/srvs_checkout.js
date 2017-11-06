@@ -37,8 +37,9 @@ app.service('Checkout', function(Network, Account, Storage, Notifications) {
       message: order.message ? order.message : ''
     };
     Storage.set('tempOrderData', params, true);
-    Network.post('end/ordercomplete', params).then(function(response) {
-      if (response) {
+    Network.post('end/ordercomplete', params, 5, true).then(function(response) {
+      check.checkingOut = false;
+      if (response && !response.error) {
         Storage.set('orderData', order, true);
         window.location = response.RedirectUrl;
       }

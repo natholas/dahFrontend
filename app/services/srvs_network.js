@@ -37,13 +37,13 @@ app.service("Network", function($http, $q, Notifications, $rootScope) {
         if (!returnError) {
           Notifications.add(response.data.error, "bad", urgency);
           deferred.resolve(false);
-        } else deferred.resolve(response.data.error);
+        } else deferred.resolve({ error: response.data.error });
       }
     }, function(err) {
       if (!returnError) {
         Notifications.add("error", "bad", urgency);
         deferred.resolve(false);
-      } else deferred.resolve(false);
+      } else deferred.resolve({ error: err });
     });
     return deferred.promise;
   };

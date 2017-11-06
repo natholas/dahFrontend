@@ -12,7 +12,7 @@ app.service("Bootloader", function(Network, $q, Storage, $interval, Notification
       deferred.resolve(this.visitorToken);
     }
     else Network.post('end/bootloader', {}, 8, true).then(function(response) {
-      if (response) {
+      if (response && !response.error) {
         this.visitorToken = Network.visitorToken = response.visitorToken;
         Storage.set('visitorToken', this.visitorToken, true);
         boot.dataLoaded = true;

@@ -20,7 +20,7 @@ var templateCache;
 // This value can be updated by running gulp increment
 var v = "9";
 var backendUrl = 'https://dignity-hope.org/';
-var devBackendUrl = 'http://localhost:3000/';
+var devBackendUrl = 'https://localhost:3000/';
 
 //////////
 // Default Task
