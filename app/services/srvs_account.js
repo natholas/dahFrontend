@@ -1,4 +1,4 @@
-app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout, Bootloader) {
+app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout, Bootloader, Notifications) {
 
   var acc = this;
   this.loginToken = null;
@@ -38,6 +38,7 @@ app.service("Account", function(Network, Storage, Order, Entrepreneurs, $timeout
         acc.save();
         acc.getOrders();
         ga('send', 'event', 'account', 'login', 'success');
+        Notifications.add('You are now logged in!', 'good');
       }
       else ga('send', 'event', 'account', 'login', 'failed');
       return response;
