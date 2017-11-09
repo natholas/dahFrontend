@@ -1,4 +1,4 @@
-app.factory('Entrepreneur', function(Network) {
+app.factory('Entrepreneur', function (Network, $timeout) {
 
   var Entrepreneur = function(data) {
     this.updateData(data);
@@ -22,8 +22,13 @@ app.factory('Entrepreneur', function(Network) {
     this.teamName = data.teamName;
     this.countryName = data.countryName;
     this.image = data.image;
+    this.parentId = data.parentId;
+    this.type = data.type;
+    this.children = [];
     if (!this.orders) this.orders = {};
     if (!this.accountInvestment) this.accountInvestment = 0;
+    if (this.status == 'FUNDED') this.getChildren();
+    if (this.parentId) this.getParent();
   };
 
   Entrepreneur.prototype.getMessages = function () {
@@ -34,15 +39,51 @@ app.factory('Entrepreneur', function(Network) {
         entr.countInvestors(response.messages)
       }
     });
+  };
 
-    Entrepreneur.prototype.countInvestors = function (messages) {
-      var investors = [];
-      for (var i in messages) {
-        if (investors.indexOf(messages[i].userId) < 0)
-          investors.push(messages[i].userId);
+  Entrepreneur.prototype.countInvestors = function (messages) {
+    var investors = [];
+    for (var i in messages) {
+      if (investors.indexOf(messages[i].userId) < 0)
+        investors.push(messages[i].userId);
+    }
+    this.investorCount = investors.length;
+  };
+
+  Entrepreneur.prototype.getChildren = function () {
+    var params = { entrepreneurId: this.id }, entr = this;
+    Network.post('end/getchildren', params).then(function (response) {
+      if (response) {
+        for (var child of response.children) {
+          entr.entrepreneurs.getEntrepreneur(child).then(function (data) {
+            if (data) {
+              data.parent = entr;
+              entr.children.push(data);
+            }
+          })
+        }
       }
-      this.investorCount = investors.length;
-    };
+    });
+  };
+
+  Entrepreneur.prototype.getParent = function () {
+    var entr = this;
+    $timeout(function() {
+      entr.entrepreneurs.getEntrepreneur(entr.parentId);
+    });
+  };
+
+  Entrepreneur.prototype.totalReinvested = function () {
+    var total = 0;
+    var count = 0;
+    for (var child of this.children) {
+      total += child.amountNeeded*1;
+      count += 1;
+      var out = child.totalReinvested();
+      total += out.total;
+      count += out.count;
+    }
+    return {total: total, count: count};
   };
 
   return Entrepreneur;

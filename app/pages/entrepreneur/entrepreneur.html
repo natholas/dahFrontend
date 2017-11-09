@@ -2,8 +2,7 @@
   <section class="screenblock light-colour entrepreneur-top">
     <div class="content">
       <div class="next-to-image">
-        <a href="/entrepreneurs" ng-show="entrepreneur.status == 'LIVE'">View all entrepreneurs</a>
-        <a href="/success-stories" ng-show="entrepreneur.status != 'LIVE'">View all success stories</a>
+        <a href="/entrepreneurs">View all entrepreneurs</a>
         <h1 class="bottomless headless">{{entrepreneur.name}}</h1>
       </div>
       <div
@@ -43,20 +42,29 @@
       <location ng-if="showLocation" country-id="entrepreneur.countryId"></location>
     </div>
   </section>
-
-  <div>
-    <section class="screenblock">
-      <div class="content">
-        <h2>{{entrepreneur.investorCount}} <span ng-show="entrepreneur.investorCount != 1">people have</span><span ng-show="entrepreneur.investorCount == 1">person has</span> invested in {{entrepreneur.name}}.</h2>
-        <investor-messages data="entrepreneur"></investor-messages>
-        <div class="center" ng-show="entrepreneur.status == 'LIVE'">
-          <br>
-          <p class="">Invest to add your own message</p>
-          <a ng-href="/checkout/{{entrepreneur.id}}/5" class="button">Invest</a>
-        </div>
+  
+  <section class="screenblock" ng-if="entrepreneur.type == 'MAIN'">
+    <div class="content">
+      <h2>{{entrepreneur.investorCount}} <span ng-show="entrepreneur.investorCount != 1">people have</span><span ng-show="entrepreneur.investorCount == 1">person has</span> invested in {{entrepreneur.name}}.</h2>
+      <investor-messages data="entrepreneur"></investor-messages>
+      <div class="center" ng-show="entrepreneur.status == 'LIVE'">
+        <br>
+        <p class="">Invest to add your own message</p>
+        <a ng-href="/checkout/{{entrepreneur.id}}/5" class="button">Invest</a>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
+  <section class="screenblock light-colour" ng-if="entrepreneur.children.length">
+    <div class="content">
+      <h2>Reinvestments</h2>
+      <span>{{entrepreneur.name}} has used part of their profits to invest</span>
+      <sub-entrepreneur ng-repeat="child in entrepreneur.children" data="child"></sub-entrepreneur>
+      <div class="total-reinvested" ng-show="entrepreneur.totalReinvested().total > entrepreneur.children[0].amountNeeded">
+        The <b>{{entrepreneur.totalInvested | money}}</b> investment into {{entrepreneur.name}} has caused an additional <b>{{entrepreneur.totalReinvested().total | money}}</b> to be reinvested into <b>{{entrepreneur.totalReinvested().count}}</b> other entrepreneurs.
+      </div>
+    </div>
+  </section>
 
   <section class="screenblock dark-colour" viewport-enter="showTeam = true">
     <div class="content">

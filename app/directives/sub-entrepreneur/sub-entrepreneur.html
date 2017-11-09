@@ -1,0 +1,7 @@
+<div class="sub-entrepreneur">
+  <a ng-href="/entrepreneur/{{entrepreneur.id}}">{{entrepreneur.amountNeeded | money}} in {{entrepreneur.name}} on {{entrepreneur.fundedTime | date : 'dd/MM/yyyy'}}</a>
+  <div ng-repeat="child in entrepreneur.children">
+    Who invested
+    <sub-entrepreneur data="child"></sub-entrepreneur>
+  </div>
+</div>

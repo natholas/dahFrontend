@@ -1,0 +1,57 @@
+.entrepreneur-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .grid-item {
+    text-decoration: none;
+    width: calc(12.5% - #{$gutter});
+    border-radius: 4px;
+    display: block;
+    margin: $gutter $gutter 0 0;
+
+    &:after {
+      display: none;
+    }
+    
+    .image {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: grayscale(50%);
+      transition: filter .2s ease;
+      height: 100%;
+      &:hover {
+        filter: grayscale(0%)
+      }
+      &:before {
+        content:'';
+        float:left;
+        padding-top:100%;
+      }
+    }
+    
+    &.funded {
+      background-color: $colour-primary;
+
+      .image {
+        filter: grayscale(50%);
+        opacity: 0.5;
+        transition: opacity .2s ease;
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+      position: relative;
+      span {
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+    }
+  }
+}

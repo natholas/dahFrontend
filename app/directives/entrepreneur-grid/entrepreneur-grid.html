@@ -1,0 +1,8 @@
+<div class="entrepreneur-grid">
+  <a ng-repeat="item in gridItems track by $index"
+    ng-href="/entrepreneur/{{item.id}}"
+    class="grid-item"
+    ng-class="{funded: item.status == 'FUNDED'}">
+    <div class="image" ng-style="{'background-image': 'url(@BACKENDURL@' + item.image + ')'}"></div>
+    <span ng-show="item.status == 'FUNDED'">FUNDED</span></a>
+</div>

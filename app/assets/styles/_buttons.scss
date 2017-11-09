@@ -16,6 +16,10 @@ input[type='submit'] {
   text-align: center;
   transition: all .2s ease;
 
+  &.active {
+    background-color: $colour-secondary
+  }
+
   &.full-width {
     width: 100%;
     padding: $gutter;

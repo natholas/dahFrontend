@@ -1,12 +1,20 @@
 <section class="screenblock light-colour">
   <div class="content">
+
+    <entrepreneur-grid></entrepreneur-grid>
+
     <h1>Featured entrepreneur</h1>
     <featured-entrepreneur status="'LIVE'"></featured-entrepreneur>
   </div>
 </section>
 
 <section class="screenblock">
-  <div class="content">
-    <entrepreneurs status="'LIVE'"></entrepreneurs>
+  <div class="content" ng-init="status = 'LIVE'">
+    <div class="center">
+      <button ng-click="status = 'LIVE'" ng-class="{active: status == 'LIVE'}">LIVE</button>
+      <button ng-click="status = 'FUNDED'" ng-class="{active: status == 'FUNDED'}">FUNDED</button>
+    </div>
+    <br>
+    <entrepreneurs status="status"></entrepreneurs>
   </div>
 </section>

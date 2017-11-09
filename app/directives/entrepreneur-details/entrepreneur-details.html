@@ -12,10 +12,11 @@
     <ul class="un">
       <li>Goal: <b>{{entrepreneur.amountNeeded | money}}</b></li>
       <li ng-hide="entrepreneur.status == 'LIVE'">Goal reached: <b>{{entrepreneur.fundedTime | date}}</b></li>
-      <li ng-hide="entrepreneur.status == 'LIVE'">Time taken: <b>{{entrepreneur.fundedTime | dateDiff : entrepreneur.createdTime}}</b></li>
+      <li ng-hide="entrepreneur.status == 'LIVE' || entrepreneur.type == 'SUB'">Time taken: <b>{{entrepreneur.fundedTime | dateDiff : entrepreneur.createdTime}}</b></li>
       <li ng-show="entrepreneur.status == 'LIVE'">Missing: <b>{{entrepreneur.stillNeeded | money}}</b></li>
       <li ng-show="entrepreneur.status == 'LIVE'">Funded: <b>{{100 / entrepreneur.amountNeeded * entrepreneur.totalInvested | number : 0}}%</b></li>
-      <li>Investors: <b>{{entrepreneur.investorCount}}</b></li>
+      <li ng-show="entrepreneur.type == 'MAIN'">Investors: <b>{{entrepreneur.investorCount}}</b></li>
+      <li ng-show="entrepreneur.type == 'SUB'">Investor: <b><a ng-href="entrepreneur/{{entrepreneur.parent.id}}">{{entrepreneur.parent.name}}</a></b></li>
       <li>Location: <b>{{entrepreneur.city}} {{entrepreneur.countryName}}</b></li>
       <li>Local partner: <b>{{entrepreneur.teamName}}</b></li>
     </ul>

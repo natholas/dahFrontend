@@ -4,7 +4,9 @@ app.directive('entrepreneurs', function() {
     scope: {status: '='},
     controller: function($scope, Entrepreneurs) {
       $scope.data = Entrepreneurs;
-      Entrepreneurs.needEntrepreneurData($scope.status);
+      $scope.$watch('status', function() {
+        Entrepreneurs.needEntrepreneurData($scope.status);
+      })
     }
   }
 });

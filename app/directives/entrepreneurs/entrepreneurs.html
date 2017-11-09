@@ -1,5 +1,8 @@
 <div class="entrepreneurs row">
-  <a class="entrepreneur" ng-repeat="entrepreneur in data.entrepreneurs | objToArray | orderBy : (entrepreneur.status == 'LIVE' ? '-stillNeeded' : '-fundedTime') | filter : {status: status}" ng-href="/entrepreneur/{{entrepreneur.id}}">
+  <a class="entrepreneur" 
+  ng-repeat="entrepreneur in data.entrepreneurs | objToArray | orderBy : (entrepreneur.status == 'LIVE' ? '-stillNeeded' : '-fundedTime') | filter : {status: status}" 
+  ng-class="{funded: entrepreneur.status == 'FUNDED'}"
+    ng-href="/entrepreneur/{{entrepreneur.id}}">
     <div class="tag" ng-show="entrepreneur.accountInvestment">INVESTED</div>
     <div
       ng-if="entrepreneur.image"

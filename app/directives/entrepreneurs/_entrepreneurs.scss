@@ -29,6 +29,27 @@
       height: 340px;
       background-size: cover;
       background-position: center;
+      filter: grayscale(50%);
+      transition: filter .2s ease;
+    }
+
+    &:hover {
+        .entrepreneur-image {
+          filter: grayscale(0%);
+        }
+      }
+
+    &.funded {
+      .entrepreneur-image {
+        filter: grayscale(100%);
+        transition: filter .2s ease;
+      }
+      
+      &:hover {
+        .entrepreneur-image {
+          filter: grayscale(50%);
+        }
+      }
     }
 
     .entrepreneur-content {
