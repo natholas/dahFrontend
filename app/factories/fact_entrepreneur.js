@@ -54,8 +54,8 @@ app.factory('Entrepreneur', function (Network, $timeout) {
     var params = { entrepreneurId: this.id }, entr = this;
     Network.post('end/getchildren', params).then(function (response) {
       if (response) {
-        for (var child of response.children) {
-          entr.entrepreneurs.getEntrepreneur(child).then(function (data) {
+        for (var i in response.children) {
+          entr.entrepreneurs.getEntrepreneur(response.children[i]).then(function (data) {
             if (data) {
               data.parent = entr;
               entr.children.push(data);
@@ -76,10 +76,10 @@ app.factory('Entrepreneur', function (Network, $timeout) {
   Entrepreneur.prototype.totalReinvested = function () {
     var total = 0;
     var count = 0;
-    for (var child of this.children) {
-      total += child.amountNeeded*1;
+    for (var i in this.children) {
+      total += this.children[i].amountNeeded*1;
       count += 1;
-      var out = child.totalReinvested();
+      var out = this.children[i].totalReinvested();
       total += out.total;
       count += out.count;
     }

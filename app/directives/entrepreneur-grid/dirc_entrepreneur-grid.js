@@ -12,10 +12,10 @@ app.directive('entrepreneurGrid', function(Entrepreneurs) {
         if (response) $scope.addItems(response);
       });
 
-      $scope.addItems = function(date) {
-        date = randomizeArray(objToArray(date));
+      $scope.addItems = function(data) {
+        data = randomizeArray(objToArray(data));
         var items = [];
-        for (var item of date) if (item.image) items.push(item);
+        for (var i in data) if (data[i].image) items.push(data[i]);
         $scope.gridItems = randomizeArray($scope.gridItems.concat(items.splice(0, 8)));
       }
     }

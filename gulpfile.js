@@ -18,7 +18,7 @@ var sass = require('gulp-sass');
 var templateCache;
 
 // This value can be updated by running gulp increment
-var v = "10";
+var v = "11";
 var backendUrl = 'https://dignity-hope.org/';
 var devBackendUrl = 'https://localhost:3000/';
 
@@ -197,7 +197,10 @@ function concatJsFiles(dest, callback, preload) {
 function minifyJs(src, dest) {
   return gulp.src(src)
   .pipe(ngAnnotate())
-  .pipe(uglify({mangle: false}))
+    .pipe(uglify({ mangle: false }).on('error', function (uglify) {
+      console.log(uglify);
+      this.emit('end');
+    }))
   .pipe(rename({suffix: '.min'}))
   .pipe(gulp.dest(dest));
 }
